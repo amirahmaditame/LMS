@@ -1,0 +1,23 @@
+﻿
+<ul class="nav-menu nav-menu-social align-to-right">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="fas fa-user">
+            <a href="#"> <b>خوش آمدید</b> @User.Identity.Name</a>
+        </li>
+        <li class="fas fa-lock">
+            <a href="/Logout">خروج</a>
+        </li>
+    }
+    else
+    {
+        <li class="login_click light">
+            <a href="#" data-toggle="modal" data-target="#login">Sign in</a>
+        </li>
+        <li class="login_click theme-bg">
+            <a href="#" data-toggle="modal" data-target="#signup">Sign up</a>
+        </li>
+
+    }
+
+</ul>

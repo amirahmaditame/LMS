@@ -1,0 +1,180 @@
+﻿@model DataLayer.User_PF
+
+@{
+    ViewBag.Title = "AccountSetting";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="gray pt-0">
+    <div class="container-fluid">
+
+        <!-- Row -->
+        <div class="row">
+
+            <div class="col-lg-9 col-md-9 col-sm-12">
+
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 pt-4 pb-4">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/userpanel/dashboard">خانه</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">تنظیمات حساب کاربری</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!-- /Row -->
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="dashboard_container">
+                            <div class="dashboard_container_header">
+                                <div class="dashboard_fl_1">
+                                    <h4 class="text-right">حساب کاربری</h4>
+                                </div>
+                            </div>
+                            <div class="dashboard_container_body p-4">
+                                <!-- Basic info -->
+                                @using (Html.BeginForm("AccountSetting", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div class="submit-section">
+                                        <div class="form-row">
+
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            @Html.HiddenFor(model => model.UserID)
+                                            @Html.HiddenFor(model => model.User_PFID)
+                                            @Html.HiddenFor(model => model.ImageName)
+
+                                            <div class="form-group col-md-6">
+                                                <label>
+                                                    @Html.LabelFor(model => model.PhoneNumber)
+                                                </label>
+                                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label>
+                                                    @Html.LabelFor(model => model.WebSite)
+                                                </label>
+                                                @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <input type="file" name="ImgUp" id="ImgUp" />
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>
+                                                    تصویر پروفایل
+                                                </label>
+                                                <img src="/Images/Student/@Model.ImageName" id="ImgPre" style="max-width: 120px" />
+                                            </div>
+
+
+
+                                            <div class="form-group col-md-12">
+                                                <label>
+                                                    @Html.LabelFor(model => model.Biography)
+                                                </label>
+                                                @Html.EditorFor(model => model.Biography, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Biography, "", new { @class = "text-danger" })
+                                            </div>
+
+                                            <div class="form-group col-lg-12 col-md-12">
+                                                <button class="btn btn-theme" type="submit">ثبت تغییرات</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+                                <!-- Basic info -->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Row -->
+
+            </div>
+            <div class="col-lg-3 col-md-3 p-0 ">
+                <div class="dashboard-navbar " style="text-align: right;">
+
+                    <div class="d-user-avater">
+                        <img src="/content/assets/img/user-3.jpg" class="img-fluid avater" alt="">
+                        <h4>Adam Harshvardhan</h4>
+                        <span>Canada USA</span>
+                    </div>
+
+                    <div class="d-navigation">
+                        <ul id="side-menu">
+                            <li><a href="/UserPanel"><i class="ti-user"></i>داشبورد</a></li>
+                            <li  class="active"><a href="/UserPanel/Dashboard/AccountSetting"><i class="ti-heart"></i>ویرایش حساب کاربری</a></li>
+                            <li><a href="/UserPanel/Dashboard/ChangePassword"><i class="ti-heart"></i>تغییر رمز</a></li>
+
+
+                            <li><a href="my-order.html"><i class="ti-shopping-cart"></i>کیف پول</a></li>
+                            <li><a href="settings.html"><i class="ti-settings"></i>فاکتور ها </a></li>
+                            <li><a href="/Logout"><i class="ti-power-off"></i>خروج</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- Row -->
+
+    </div>
+</section>
+
+
+@section Scripts
+{
+    @if (ViewBag.SuccessProfile != null)
+    {
+        <script>
+            Command: toastr["success"]("پروفایل با موفقیت تغییر کرد");
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        </script>
+    }
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ImgPre').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}

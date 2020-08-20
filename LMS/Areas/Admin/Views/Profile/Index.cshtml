@@ -1,0 +1,256 @@
+﻿@model DataLayer.Teachers_PF
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title">پروفایل مدرس</h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="#"><i class="fa fa-home"></i>خانه</a></li>
+                <li>پروفایل مدرس</li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="wc-title">
+                        <h4>پروفایل مدرس</h4>
+                    </div>
+                    <div class="widget-inner">
+                        @using (Html.BeginForm("Index", "Profile", FormMethod.Post, new { id="profile" ,enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Teacher_PFID)
+                            @Html.HiddenFor(model => model.UserID)
+                            @Html.HiddenFor(model => model.ImageName)
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="ml-auto">
+                                        <h3>1. جزییات پروفایل</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="col-form-label">
+                                        @Html.LabelFor(model => model.PhoneNumber)
+                                    </label>
+                                    <div>
+                                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="col-form-label">
+                                        @Html.LabelFor(model => model.City)
+                                    </label>
+                                    <div>
+                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 col-xl-12">
+                                    <label class="col-form-label">
+                                        @Html.LabelFor(model => model.Education)
+                                    </label>
+                                    <div>
+                                        @Html.EditorFor(model => model.Education, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Education, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="seperator"></div>
+                                <div class="form-group col-6">
+                                    <label class="col-form-label">
+                                        انتخاب تصویر
+                                    </label>
+                                    <div>
+                                        <input type="file" name="ImgUp" id="ImgUp" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label class="col-form-label">تصویر پروفایل</label>
+                                    <div>
+                                        <img src="/Images/Teachers/@Model.ImageName" id="ImgPre" style="max-width: 120px" />
+                                    </div>
+                                </div>
+                                <div class="seperator"></div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn">ذخیره تغییرات</button>
+                                    <button type="reset" class="btn-secondry">انصراف</button>
+                                </div>
+                            </div>
+                        }
+                        @using (Html.BeginForm("ChnagePassword", "Profile", FormMethod.Post, new { id = "ChnagePassword" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="mt-5">
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <h3>2. رمزعبور</h3>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">رمز عبور فعلی</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="OldPassword" type="password" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">رمز عبور جدید</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="Password" id="Pass" onkeyup="CheckPass()" type="password" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">تکرار رمزعبور</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" name="RePassword" id="RePass" onkeyup="CheckPass()" type="password" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-2">
+                                </div>
+                                <div class="col-sm-7">
+                                    <button type="submit" onclick="ChangePass()" id="btnRegister" class="btn">ذخیره رمز عبور</button>
+                                    <button type="reset" class="btn-secondry">انصراف</button>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <!-- Your Profile Views Chart END-->
+        </div>
+
+    </div>
+</main>
+@section Scripts
+{
+    @if (ViewBag.WrongPass != null)
+    {
+        <script>
+            Command: toastr["warning"]("پسور فعلی اشتباه وارد شده است");
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        </script>
+    }
+    @if (ViewBag.SuccessPass != null)
+    {
+        <script>
+            Command: toastr["success"]("پسورد با موفقیت تغییر کرد");
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        </script>
+    }
+    @if (ViewBag.SuccessProfile != null)
+    {
+        <script>
+            Command: toastr["success"]("پروفایل با موفقیت تغییر کرد");
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        </script>
+    }
+    <script>
+        function ChangePass() {
+            $("#ChnagePassword").submit();
+        }
+
+
+        function CheckPass() {
+
+            if ($("#Pass").val() !== null && $("#RePass").val !== null) {
+                if ($("#Pass").val() !== $("#RePass").val()) {
+
+                    $("#btnRegister").attr("disabled", true);
+                    $("#btnRegister").html("پسورد ها تطابق ندارد");
+
+                } else if ($("#Pass").val() === $("#RePass").val()) {
+                    $('#btnRegister').removeAttr("disabled");
+                    $("#btnRegister").html("ذخیره رمز عبور");
+
+                }
+
+            }
+        }
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ImgPre').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+    </script>
+}
+
+
+

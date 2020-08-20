@@ -1,0 +1,458 @@
+﻿@using DataLayer
+@model DataLayer.Courses
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title">افزودن دوره</h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="/"><i class="fa fa-home"></i>خانه</a></li>
+                <li>افزودن دوره</li>
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="wc-title">
+                        <h4>افزودن دوره</h4>
+                    </div>
+                    <div class="widget-inner">
+
+                        <div class="edit-profile m-b30">
+                            <div class="row">
+                                @using (Html.BeginForm("Create", "Courses", FormMethod.Post, new { @class = "row", id = "CuorseForm", enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    <div class="col-12">
+                                        <div class="ml-auto">
+                                            <h3>1. اطلاعات پایه</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseName)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.Price)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseLevel)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseLevel, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseLevel, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseStatus)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseStatus, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.ImageName)
+                                        </label>
+                                        <div>
+                                            <input type="file" id="ImgUp" name="ImgUp" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            نمایش تصویر
+                                        </label>
+                                        <div>
+                                            <img src="/Images/Courses/no-image-found.png" style="max-width: 200px" id="ImgPre" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            انتخاب دسته بندی
+                                        </label>
+                                        <div>
+                                            @{
+                                                List<Categories> categories = ViewBag.Category;
+
+                                               
+
+                                                <select multiple name="SelectCategory" data-width="400px" data-live-search="true" title="انتخاب کنید" class="selectpicker">
+                                                    @foreach (var item in categories)
+                                                    {
+                                                        <option data-tokens="@item.Name" value="@item.CategoryID">@item.Name</option>
+
+                                                    }
+                                                </select>
+                                            }
+
+                                        </div>
+                                    </div>
+
+                                    <div class="seperator"></div>
+
+                                    <div class="col-12 m-t20">
+                                        <div class="ml-auto m-b5">
+                                            <h3>2. توضیحات</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.ShortDescription)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="seperator"></div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.Text)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                }
+                                <div class="col-12 m-t20">
+                                    <div class="ml-auto">
+                                        <h3 class="m-form__section">3. افزودن ویدیو جدید</h3>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <table id="item-add" style="width: 100%;">
+                                        <tbody id="table_add">
+                                            <tr class="list-item" id="Tr_">
+                                                <td>
+                                                    @using (Html.BeginForm("CreateSubCourse", "Courses", FormMethod.Post, new {@class="CuorseSubForm", id = "CuorseSubForm_", enctype = "multipart/form-data" }))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+
+                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                        <input name="CourseID" id="courseid" type="hidden" value="@Model.CourseID">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label">نام دوره</label>
+                                                                <div>
+                                                                    <input class="form-control"  id="SubCourseTitle_0" name="SubCourseTitle" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label"> ویدیو</label>
+                                                                <div>
+                                                                    <input type="file" id="VideoUp_0"  name="VideoUp" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label">نوار پیشرفت</label>
+                                                                <div>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar" id="progress-bar_0">
+                                                                            ۰ %
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="status">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label class="col-form-label">نقدی با رایگان</label>
+                                                                <div>
+                                                                    <input id="CashOrFree" type="checkbox" value="true" name="CashOrFree" />
+                                                                    <input type="hidden" value="false" name="CashOrFree" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1">
+                                                                <label class="col-form-label">بستن</label>
+                                                                <div class="form-group">
+                                                                    <a class="delete" onclick="DeleteTr()"><i class="fa fa-close"></i></a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-11">
+                                                                <label class="col-form-label"> توضیح مختصر</label>
+                                                                <div>
+                                                                    <textarea class="form-control" type="text"  id="SubCourseDescription_0" name="SubCourseDescription"></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1">
+                                                                <label class="col-form-label">افزودن</label>
+                                                                <div class="form-group">
+                                                                    <a class="create" onclick="submitSubCourses()"><i class="fa fa-check"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-12 my-2">
+                                    <button type="button" class="btn-secondry  m-r5" onclick="AddItem()"><i class="fa fa-fw fa-plus-circle"></i>افزودن</button>
+                                    <button id="SaveChanges" onclick="submitCourses()" class="btn">ذخیره تغییرات</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Your Profile Views Chart END-->
+        </div>
+    </div>
+</main>
+
+@section Scripts
+{
+    <script src="~/Areas/Admin/Admin_Content/assets/js/jquery.form.js"></script>
+    @if (Model.CourseID > 0)
+    {
+        <script>
+            Command: toastr["success"]("عملیات با موفقیت انجام شد");
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        </script>
+        <script>
+            $("#SaveChanges").attr("disabled", true);
+        </script>
+    }
+    <script>
+        $(document).ready(function() {
+            $('#Text').summernote();
+        });
+        var counter = 0;
+
+        function AddItem() {
+            if (counter === 0) {
+                counter = 1;
+            }
+            var TrBody = `
+
+                                               <tr class="list-item" id="Tr_${counter}">
+                                                <td>
+                                                    @using (Html.BeginForm("CreateSubCourse", "Courses", FormMethod.Post, new {@class="CuorseSubForm", id = "CuorseSubForm_", enctype = "multipart/form-data"}))
+                                                    {
+                                                        @Html.AntiForgeryToken()
+
+                                                        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+
+                                                        <input name="CourseID" id="courseid" type="hidden" value="@Model.CourseID">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label">نام دوره</label>
+                                                                <div>
+                                                                    <input class="form-control"  id="SubCourseTitle_${counter}" name="SubCourseTitle" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label"> ویدیو</label>
+                                                                <div>
+                                                                    <input type="file" id="VideoUp_${counter}" name="VideoUp" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label class="col-form-label">نوار پیشرفت</label>
+                                                                <div>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar" id="progress-bar_${counter}">
+                                                                            ۰ %
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="status">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label class="col-form-label">نقدی با رایگان</label>
+                                                                <div>
+                                                                    <input id="CashOrFree" type="checkbox" value="true" name="CashOrFree" />
+                                                                    <input type="hidden" value="false" name="CashOrFree" />
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1">
+                                                                <label class="col-form-label">بستن</label>
+                                                                <div class="form-group">
+                                                                    <a class="delete" onclick="DeleteTr(${counter})"><i class="fa fa-close"></i></a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-11">
+                                                                <label class="col-form-label"> توضیح مختصر</label>
+                                                                <div>
+                                                                    <textarea class="form-control"  id="SubCourseDescription_${counter}" type="text" name="SubCourseDescription"></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-1">
+                                                                <label class="col-form-label">افزودن</label>
+                                                                <div class="form-group">
+                                                                    <a class="create" onclick="submitSubCourses(${counter})"><i class="fa fa-check"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </td>
+                                            </tr>`;
+
+            var Table = $
+                ("#table_add");
+            Table.append(TrBody);
+            //debugger ;
+            counter = counter + 1;
+        }
+
+        function DeleteTr(id) {
+            $("#Tr_" + id).remove();
+        }
+
+        function submitCourses() {
+            $("#CuorseForm").submit();
+        }
+
+        function submitSubCourses(id = 0) {
+            debugger;
+            if ($("#courseid").val() > 0) {
+                $(".CuorseSubForm")[id].id = "CuorseSubForm_"+id;
+                if (IsValide(id).length === 0) {
+                    SendAjax(id);
+                    $("#CuorseSubForm_"+id).submit();
+                } else {
+                    swal({
+                        title: "خطا",
+                        text:  " در ردیف  " + " " + + (id +1) + " " + IsValide(id) + "وارد نشده اند",
+                        icon: "warning",
+                        button: "OK",
+                    });
+                }
+            } else {
+                swal({
+                    title: "اخطار",
+                    text: "ابتدا باید اطلاعات پایه را وارد و سپس روی ذخیره اطلاعات کلیک کنید",
+                    icon: "warning",
+                    button: "OK",
+                });
+            }
+        }
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#ImgPre').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#ImgUp").change(function() {
+            readURL(this);
+        });
+
+        function SendAjax(id=0) {
+            debugger;
+            var bar = $('#progress-bar_' + id);
+            var percent = $('#progress-bar_' + id);
+            var status = $('#status');
+
+            $('#CuorseSubForm_'+id).ajaxForm({
+                beforeSend: function() {
+                    status.empty();
+                    var percentVal = '0%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                uploadProgress: function(event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                success: function() {
+                    var percentVal = '100%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                complete: function(xhr) {
+                    status.html(xhr.responseText);
+                    swal({
+                        text: "اطلاعات با موفقیت ذخیره شد",
+                        icon: "success",
+                        button: "OK",
+                    }).then((value) => {
+                        swal(`میتوانید ادامه کار را به قسمت فهرست درس ها بروید  `);
+                    });
+                }
+            });
+        }
+
+        function IsValide(id=0) {
+            //alert(id);
+            var Error = '';
+            var description = $("#SubCourseDescription_"+id).val();
+            var courseName = $("#SubCourseTitle_"+id).val();
+            var vidup = $("#VideoUp_"+id).val();
+            if (description === '') Error = "توضیح و";
+            if (courseName === '') Error += " نام و ";
+            if (vidup === '') Error += " ویدیو ";
+            return Error;
+        }
+    </script>
+}
+
+
+
+
+
+

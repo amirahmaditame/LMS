@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LearningDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LearningDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="LearningDBModel.Categories" />
+    <EntitySet Name="Courses" EntityType="LearningDBModel.Courses" />
+    <EntitySet Name="Roles" EntityType="LearningDBModel.Roles" />
+    <EntitySet Name="Selected_Category" EntityType="LearningDBModel.Selected_Category" />
+    <EntitySet Name="SubCourse" EntityType="LearningDBModel.SubCourse" />
+    <EntitySet Name="Teachers_PF" EntityType="LearningDBModel.Teachers_PF" />
+    <EntitySet Name="User_PF" EntityType="LearningDBModel.User_PF" />
+    <EntitySet Name="Users" EntityType="LearningDBModel.Users" />
+    <EntitySet Name="Discount" EntityType="LearningDBModel.Discount" />
+    <AssociationSet Name="FK_Categories_Categories" Association="LearningDBModel.FK_Categories_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Categories1" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Selected_Category_Categories" Association="LearningDBModel.FK_Selected_Category_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Selected_Category" EntitySet="Selected_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Courses_Users" Association="LearningDBModel.FK_Courses_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Discount_Courses" Association="LearningDBModel.FK_Discount_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Discount" EntitySet="Discount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Selected_Category_Courses" Association="LearningDBModel.FK_Selected_Category_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Selected_Category" EntitySet="Selected_Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCourse_Courses" Association="LearningDBModel.FK_SubCourse_Courses">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="SubCourse" EntitySet="SubCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="LearningDBModel.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Teachers_PF_Users" Association="LearningDBModel.FK_Teachers_PF_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Teachers_PF" EntitySet="Teachers_PF" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_PF_Users" Association="LearningDBModel.FK_User_PF_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="User_PF" EntitySet="User_PF" />
+    </AssociationSet>
+    <EntitySet Name="Notifications" EntityType="LearningDBModel.Notifications" />
+    <AssociationSet Name="FK_Notifications_Users" Association="LearningDBModel.FK_Notifications_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <NavigationProperty Name="Categories1" Relationship="LearningDBModel.FK_Categories_Categories" FromRole="Categories" ToRole="Categories1" />
+    <NavigationProperty Name="Categories2" Relationship="LearningDBModel.FK_Categories_Categories" FromRole="Categories1" ToRole="Categories" />
+    <NavigationProperty Name="Selected_Category" Relationship="LearningDBModel.FK_Selected_Category_Categories" FromRole="Categories" ToRole="Selected_Category" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="ShortDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfStudents" Type="Int32" />
+    <Property Name="CourseLevel" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CourseStatus" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ImageName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Courses_Users" FromRole="Courses" ToRole="Users" />
+    <NavigationProperty Name="Discount" Relationship="LearningDBModel.FK_Discount_Courses" FromRole="Courses" ToRole="Discount" />
+    <NavigationProperty Name="Selected_Category" Relationship="LearningDBModel.FK_Selected_Category_Courses" FromRole="Courses" ToRole="Selected_Category" />
+    <NavigationProperty Name="SubCourse" Relationship="LearningDBModel.FK_SubCourse_Courses" FromRole="Courses" ToRole="SubCourse" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="RoleTitle" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Selected_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categories" Relationship="LearningDBModel.FK_Selected_Category_Categories" FromRole="Selected_Category" ToRole="Categories" />
+    <NavigationProperty Name="Courses" Relationship="LearningDBModel.FK_Selected_Category_Courses" FromRole="Selected_Category" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="SubCourse">
+    <Key>
+      <PropertyRef Name="SubCourseID" />
+    </Key>
+    <Property Name="SubCourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="SubCourseTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SubCourseDescription" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CashOrFree" Type="Boolean" Nullable="false" />
+    <Property Name="VideoName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="LearningDBModel.FK_SubCourse_Courses" FromRole="SubCourse" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="Teachers_PF">
+    <Key>
+      <PropertyRef Name="Teacher_PFID" />
+    </Key>
+    <Property Name="Teacher_PFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Education" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Teachers_PF_Users" FromRole="Teachers_PF" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User_PF">
+    <Key>
+      <PropertyRef Name="User_PFID" />
+    </Key>
+    <Property Name="User_PFID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="WebSite" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="Biography" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_User_PF_Users" FromRole="User_PF" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Courses" Relationship="LearningDBModel.FK_Courses_Users" FromRole="Users" ToRole="Courses" />
+    <NavigationProperty Name="Roles" Relationship="LearningDBModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Teachers_PF" Relationship="LearningDBModel.FK_Teachers_PF_Users" FromRole="Users" ToRole="Teachers_PF" />
+    <NavigationProperty Name="User_PF" Relationship="LearningDBModel.FK_User_PF_Users" FromRole="Users" ToRole="User_PF" />
+    <NavigationProperty Name="Notifications" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="Int32" />
+    <NavigationProperty Name="Courses" Relationship="LearningDBModel.FK_Discount_Courses" FromRole="Discount" ToRole="Courses" />
+  </EntityType>
+  <Association Name="FK_Categories_Categories">
+    <End Type="LearningDBModel.Categories" Role="Categories" Multiplicity="0..1" />
+    <End Type="LearningDBModel.Categories" Role="Categories1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Categories1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Selected_Category_Categories">
+    <End Type="LearningDBModel.Categories" Role="Categories" Multiplicity="1" />
+    <End Type="LearningDBModel.Selected_Category" Role="Selected_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Selected_Category">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Courses_Users">
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="LearningDBModel.Courses" Role="Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Discount_Courses">
+    <End Type="LearningDBModel.Courses" Role="Courses" Multiplicity="1" />
+    <End Type="LearningDBModel.Discount" Role="Discount" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Discount">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Selected_Category_Courses">
+    <End Type="LearningDBModel.Courses" Role="Courses" Multiplicity="1" />
+    <End Type="LearningDBModel.Selected_Category" Role="Selected_Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Selected_Category">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCourse_Courses">
+    <End Type="LearningDBModel.Courses" Role="Courses" Multiplicity="1" />
+    <End Type="LearningDBModel.SubCourse" Role="SubCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="SubCourse">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="LearningDBModel.Roles" Role="Roles" Multiplicity="1" />
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Teachers_PF_Users">
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="LearningDBModel.Teachers_PF" Role="Teachers_PF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Teachers_PF">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_PF_Users">
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="LearningDBModel.User_PF" Role="User_PF" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User_PF">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="NotificationTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Notifications_Users">
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="LearningDBModel.Notifications" Role="Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

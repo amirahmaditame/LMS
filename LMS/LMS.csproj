@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5ACFADCC-C342-4D96-9C58-6D222015F386}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LMS</RootNamespace>
+    <AssemblyName>LMS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44307</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CourseSearchController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\TeachersController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\UserPanel\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\UserPanel\UserPanelAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CheckContentImage.cs" />
+    <Compile Include="Utilities\DateConvertor.cs" />
+    <Compile Include="Utilities\ImageResizer.cs" />
+    <Compile Include="Utilities\LMSRoleProvider.cs" />
+    <Compile Include="Utilities\PartialToStringClass.cs" />
+    <Compile Include="Utilities\SendEmail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Admin_Content\assets\cal-per\locale-all.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\cal-per\moment-jalaali.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\fa.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\fullcalendar.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\fullcalendar.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\fullcalendar.print.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\moment-jalaali.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\Cal\moment.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\assets.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\color\color-1.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\dashboard.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\accordion.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\alert.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\breadcrumb.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\button.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\divider.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\form.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\icon-box.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\layout.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\list.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\overlay.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\owl.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\pagination.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\pricingtable.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\separator.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\shortcodes.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\widget.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\style.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\typography.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\about\pic1.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic1.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic2.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic3.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic4.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic6.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic7.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic8.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\courses\pic9.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\favicon.png" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\loading.gif" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\logo-mobile.png" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\logo-white.png" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\logo.png" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\testimonials\pic1.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\testimonials\pic2.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\images\testimonials\pic3.jpg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\js\admin.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\js\jquery.form.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\css\bootstrap-select.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\css\bootstrap-select.min.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\bootstrap-select.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\bootstrap-select.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-am_ET.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-am_ET.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ar_AR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ar_AR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-bg_BG.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-bg_BG.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-da_DK.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-da_DK.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-de_DE.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-en_US.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-en_US.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_CL.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_ES.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_ES.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-et_EE.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-et_EE.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-eu.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-eu.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fa_IR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fa_IR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fi_FI.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fi_FI.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hr_HR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hr_HR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hu_HU.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hu_HU.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-id_ID.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-id_ID.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-it_IT.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ja_JP.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ja_JP.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-kh_KM.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-kh_KM.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ko_KR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ko_KR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lt_LT.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lt_LT.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lv_LV.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lv_LV.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nb_NO.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nb_NO.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_PT.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_PT.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sk_SK.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sk_SK.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sl_SI.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sl_SI.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sr_SP.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sr_SP.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sv_SE.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sv_SE.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-th_TH.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-th_TH.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-tr_TR.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-tr_TR.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ua_UA.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ua_UA.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-vi_VN.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-vi_VN.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\bootstrap\js\popper.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\calendar\fullcalendar.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\calendar\fullcalendar.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\calendar\moment.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\chart\chart.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\counter\counterup.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\counter\waypoints-min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\file-upload\imageuploadify.min.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\file-upload\imageuploadify.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.svg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\scroll\scrollbar.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\scroll\scrollbar.min.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\summernote\summernote.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\summernote\summernote.js" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\switcher\switcher.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\fonts\themify9f249f24.svg" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\themify-icons.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\cal-per\locale-all.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\cal-per\moment-jalaali.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\fa.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\fullcalendar.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\fullcalendar.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\fullcalendar.print.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\moment-jalaali.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\Cal\moment.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\assets.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\color\color-1.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\Custom-css.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\dashboard.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\accordion.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\alert.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\breadcrumb.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\button.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\divider.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\form.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\icon-box.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\layout.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\list.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\overlay.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\owl.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\pagination.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\pricingtable.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\separator.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\shortcodes.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\shortcodes\widget.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\style.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\css\typography.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\about\pic1.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic1.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic2.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic3.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic4.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic6.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic7.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic8.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\courses\pic9.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\favicon.png" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\loading.gif" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\logo-mobile.png" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\logo-white.png" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\logo.png" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\testimonials\pic1.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\testimonials\pic2.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\images\testimonials\pic3.jpg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\js\admin.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\js\jquery.form.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\js\jquery.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\css\bootstrap-select.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\css\bootstrap-select.min.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\bootstrap-select.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\bootstrap-select.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-am_ET.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-am_ET.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ar_AR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ar_AR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-bg_BG.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-bg_BG.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-da_DK.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-da_DK.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-de_DE.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-en_US.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-en_US.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_CL.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_ES.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_ES.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-et_EE.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-et_EE.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-eu.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-eu.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fa_IR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fa_IR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fi_FI.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fi_FI.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hr_HR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hr_HR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hu_HU.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hu_HU.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-id_ID.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-id_ID.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-it_IT.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ja_JP.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ja_JP.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-kh_KM.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-kh_KM.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ko_KR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ko_KR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lt_LT.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lt_LT.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lv_LV.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lv_LV.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nb_NO.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nb_NO.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_PT.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_PT.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sk_SK.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sk_SK.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sl_SI.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sl_SI.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sr_SP.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sr_SP.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sv_SE.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sv_SE.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-th_TH.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-th_TH.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-tr_TR.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-tr_TR.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ua_UA.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ua_UA.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-vi_VN.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-vi_VN.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\bootstrap\js\popper.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\calendar\fullcalendar.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\calendar\fullcalendar.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\calendar\moment.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\chart\chart.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\counter\counterup.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\counter\waypoints-min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\file-upload\imageuploadify.min.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\file-upload\imageuploadify.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.svg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\scroll\scrollbar.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\scroll\scrollbar.min.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\summernote\summernote.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\summernote\summernote.js" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\switcher\switcher.css" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\fonts\themify9f249f24.svg" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\themify-icons.css" />
+    <Content Include="Content\assets\css\colors.css" />
+    <Content Include="Content\assets\css\custom-css.css" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400.svg" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400.svg" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900.svg" />
+    <Content Include="Content\assets\css\fonts\Flaticon.svg" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfont3e6e-2.html" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfont3e6e-3.html" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfont3e6e-4.html" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfont3e6e-5.html" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="Content\assets\css\fonts\fontawesome-webfontd41d.html" />
+    <Content Include="Content\assets\css\fonts\houses.svg" />
+    <Content Include="Content\assets\css\fonts\LineIcons5594.svg" />
+    <Content Include="Content\assets\css\fonts\themify9f24.svg" />
+    <Content Include="Content\assets\css\img\loading.gif" />
+    <Content Include="Content\assets\css\plugins\ajax-loader.gif" />
+    <Content Include="Content\assets\css\plugins\animation.css" />
+    <Content Include="Content\assets\css\plugins\bootstrap.min.css" />
+    <Content Include="Content\assets\css\plugins\date-picker.css" />
+    <Content Include="Content\assets\css\plugins\dropzone.css" />
+    <Content Include="Content\assets\css\plugins\flaticon.css" />
+    <Content Include="Content\assets\css\plugins\font-awesome.css" />
+    <Content Include="Content\assets\css\plugins\fonts\slick.html" />
+    <Content Include="Content\assets\css\plugins\iconfont.css" />
+    <Content Include="Content\assets\css\plugins\ion.rangeSlider.min.css" />
+    <Content Include="Content\assets\css\plugins\light-box.css" />
+    <Content Include="Content\assets\css\plugins\line-icons.css" />
+    <Content Include="Content\assets\css\plugins\magnifypopup.css" />
+    <Content Include="Content\assets\css\plugins\morris.css" />
+    <Content Include="Content\assets\css\plugins\select2.css" />
+    <Content Include="Content\assets\css\plugins\slick-theme.css" />
+    <Content Include="Content\assets\css\plugins\slick.css" />
+    <Content Include="Content\assets\css\plugins\themify.css" />
+    <Content Include="Content\assets\css\styles.css" />
+    <Content Include="Content\assets\img\404.png" />
+    <Content Include="Content\assets\img\b-1.jpg" />
+    <Content Include="Content\assets\img\b-2.jpg" />
+    <Content Include="Content\assets\img\b-3.jpg" />
+    <Content Include="Content\assets\img\banner-1.jpg" />
+    <Content Include="Content\assets\img\banner-2.jpg" />
+    <Content Include="Content\assets\img\banner-3.jpg" />
+    <Content Include="Content\assets\img\banner-4.jpg" />
+    <Content Include="Content\assets\img\banner-5.jpg" />
+    <Content Include="Content\assets\img\book-1.png" />
+    <Content Include="Content\assets\img\book-2.png" />
+    <Content Include="Content\assets\img\book-3.png" />
+    <Content Include="Content\assets\img\book-4.png" />
+    <Content Include="Content\assets\img\book-5.png" />
+    <Content Include="Content\assets\img\book-6.png" />
+    <Content Include="Content\assets\img\book-7.png" />
+    <Content Include="Content\assets\img\book-8.png" />
+    <Content Include="Content\assets\img\book-9.png" />
+    <Content Include="Content\assets\img\brand-1.png" />
+    <Content Include="Content\assets\img\brand-2.png" />
+    <Content Include="Content\assets\img\brand-3.png" />
+    <Content Include="Content\assets\img\brand-4.png" />
+    <Content Include="Content\assets\img\brand-5.png" />
+    <Content Include="Content\assets\img\brand-6.png" />
+    <Content Include="Content\assets\img\brand-7.png" />
+    <Content Include="Content\assets\img\briefcase.png" />
+    <Content Include="Content\assets\img\career.png" />
+    <Content Include="Content\assets\img\circle-6.png" />
+    <Content Include="Content\assets\img\co-1.jpg" />
+    <Content Include="Content\assets\img\co-2.jpg" />
+    <Content Include="Content\assets\img\co-3.jpg" />
+    <Content Include="Content\assets\img\co-4.jpg" />
+    <Content Include="Content\assets\img\co-5.jpg" />
+    <Content Include="Content\assets\img\co-6.jpg" />
+    <Content Include="Content\assets\img\co-7.jpg" />
+    <Content Include="Content\assets\img\content.png" />
+    <Content Include="Content\assets\img\course-1.jpg" />
+    <Content Include="Content\assets\img\course-10.jpg" />
+    <Content Include="Content\assets\img\course-11.jpg" />
+    <Content Include="Content\assets\img\course-2.jpg" />
+    <Content Include="Content\assets\img\course-3.jpg" />
+    <Content Include="Content\assets\img\course-4.jpg" />
+    <Content Include="Content\assets\img\course-5.jpg" />
+    <Content Include="Content\assets\img\course-6.jpg" />
+    <Content Include="Content\assets\img\course-7.jpg" />
+    <Content Include="Content\assets\img\course-8.jpg" />
+    <Content Include="Content\assets\img\course-9.jpg" />
+    <Content Include="Content\assets\img\designer.png" />
+    <Content Include="Content\assets\img\edu_1.png" />
+    <Content Include="Content\assets\img\edu_2.png" />
+    <Content Include="Content\assets\img\green-logo.png" />
+    <Content Include="Content\assets\img\h-3.png" />
+    <Content Include="Content\assets\img\h-5.png" />
+    <Content Include="Content\assets\img\health.png" />
+    <Content Include="Content\assets\img\inner-2.html" />
+    <Content Include="Content\assets\img\loader.svg" />
+    <Content Include="Content\assets\img\logo-light.png" />
+    <Content Include="Content\assets\img\logo.png" />
+    <Content Include="Content\assets\img\mastercard.png" />
+    <Content Include="Content\assets\img\pat.html" />
+    <Content Include="Content\assets\img\paypal.png" />
+    <Content Include="Content\assets\img\photo.png" />
+    <Content Include="Content\assets\img\pin.svg" />
+    <Content Include="Content\assets\img\preet-o.html" />
+    <Content Include="Content\assets\img\python.png" />
+    <Content Include="Content\assets\img\search.svg" />
+    <Content Include="Content\assets\img\speaker.png" />
+    <Content Include="Content\assets\img\st-3.png" />
+    <Content Include="Content\assets\img\star-banner.png" />
+    <Content Include="Content\assets\img\testimonial.png" />
+    <Content Include="Content\assets\img\tour-1.html" />
+    <Content Include="Content\assets\img\tour-2.html" />
+    <Content Include="Content\assets\img\tour-3.html" />
+    <Content Include="Content\assets\img\tour-4.html" />
+    <Content Include="Content\assets\img\tour-5.html" />
+    <Content Include="Content\assets\img\user-1.jpg" />
+    <Content Include="Content\assets\img\user-2.jpg" />
+    <Content Include="Content\assets\img\user-3.jpg" />
+    <Content Include="Content\assets\img\user-4.jpg" />
+    <Content Include="Content\assets\img\user-5.jpg" />
+    <Content Include="Content\assets\img\user-6.jpg" />
+    <Content Include="Content\assets\img\user-7.jpg" />
+    <Content Include="Content\assets\img\user-8.jpg" />
+    <Content Include="Content\assets\img\visa.png" />
+    <Content Include="Content\assets\img\yoga.png" />
+    <Content Include="Content\assets\js\bootstrap.min.js" />
+    <Content Include="Content\assets\js\counterup.min.js" />
+    <Content Include="Content\assets\js\custom.js" />
+    <Content Include="Content\assets\js\jquery.counterup.min.js" />
+    <Content Include="Content\assets\js\jquery.min.js" />
+    <Content Include="Content\assets\js\metisMenu.min.js" />
+    <Content Include="Content\assets\js\popper.min.js" />
+    <Content Include="Content\assets\js\select2.min.js" />
+    <Content Include="Content\assets\js\slick.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\summernote-lite.css" />
+    <Content Include="Content\summernote-lite.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\Courses\no-image-found.png" />
+    <Content Include="Images\Teachers\no-avatar.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400.eot" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400.ttf" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400.woff" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400.woff2" />
+    <Content Include="Content\assets\css\fonts\fa-brands-400d41d.eot" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400.eot" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400.ttf" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400.woff" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400.woff2" />
+    <Content Include="Content\assets\css\fonts\fa-regular-400d41d.eot" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900.eot" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900.ttf" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900.woff" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900.woff2" />
+    <Content Include="Content\assets\css\fonts\fa-solid-900d41d.eot" />
+    <Content Include="Content\assets\css\fonts\Flaticon.eot" />
+    <Content Include="Content\assets\css\fonts\Flaticon.ttf" />
+    <Content Include="Content\assets\css\fonts\Flaticon.woff" />
+    <Content Include="Content\assets\css\fonts\Flaticond41d.eot" />
+    <Content Include="Content\assets\css\fonts\houses.eot" />
+    <Content Include="Content\assets\css\fonts\houses.ttf" />
+    <Content Include="Content\assets\css\fonts\houses.woff" />
+    <Content Include="Content\assets\css\fonts\housesd41d.eot" />
+    <Content Include="Content\assets\css\fonts\icofont.woff" />
+    <Content Include="Content\assets\css\fonts\icofont.woff2" />
+    <Content Include="Content\assets\css\fonts\LineIcons5594.eot" />
+    <Content Include="Content\assets\css\fonts\LineIcons5594.ttf" />
+    <Content Include="Content\assets\css\fonts\LineIcons5594.woff" />
+    <Content Include="Content\assets\css\fonts\slick.eot" />
+    <Content Include="Content\assets\css\fonts\slick.ttf" />
+    <Content Include="Content\assets\css\fonts\slick.woff" />
+    <Content Include="Content\assets\css\fonts\slickd41d.eot" />
+    <Content Include="Content\assets\css\fonts\themify9f24.eot" />
+    <Content Include="Content\assets\css\fonts\themify9f24.ttf" />
+    <Content Include="Content\assets\css\fonts\themify9f24.woff" />
+    <Content Include="Content\assets\css\fonts\themifyd41d.eot" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.woff2" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\fontawesome\fonts\fontawesome-webfontd41dd41d.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\summernote\font\summernotec360c360.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\summernote\font\summernotec360c360.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\summernote\font\summernotec360c360.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\fonts\themify.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\fonts\themify9f249f24.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\fonts\themify9f249f24.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\vendors\themify\fonts\themifyd41dd41d.eot" />
+    <Content Include="Areas\Admin\Views\Shared\Admin_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Bold.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Bold.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Bold.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Bold.woff2" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Boldd41d.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Light.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Light.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Light.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Light.woff2" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Lightd41d.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Medium.eot" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Medium.ttf" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Medium.woff" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Medium.woff2" />
+    <Content Include="Areas\Admin\Admin_Content\assets\fonts\IRANSansWeb_Mediumd41d.eot" />
+    <Content Include="Areas\Admin\Views\Courses\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\Edit.cshtml" />
+    <Content Include="Content\font\summernote.eot" />
+    <Content Include="Content\font\summernote.ttf" />
+    <Content Include="Content\font\summernote.woff" />
+    <Content Include="Content\font\summernote.woff2" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\css\bootstrap-select.css.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\bootstrap-select.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\bootstrap-select.min.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-am_ET.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ar_AR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-bg_BG.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-cs_CZ.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-da_DK.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-de_DE.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-en_US.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_CL.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-es_ES.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-et_EE.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-eu.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fa_IR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fi_FI.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-fr_FR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hr_HR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-hu_HU.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-id_ID.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-it_IT.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ja_JP.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-kh_KM.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ko_KR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lt_LT.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-lv_LV.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nb_NO.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-nl_NL.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pl_PL.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_BR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-pt_PT.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ro_RO.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ru_RU.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sk_SK.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sl_SI.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sr_SP.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-sv_SE.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-th_TH.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-tr_TR.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-ua_UA.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-vi_VN.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_CN.js.map" />
+    <Content Include="Areas\Admin\Admin_Content\assets\select\js\i18n\defaults-zh_TW.js.map" />
+    <Content Include="Areas\Admin\Views\Courses\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\EditSubCourses.cshtml" />
+    <Content Include="Areas\Admin\Views\Courses\CreateSubCourse.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\web.config" />
+    <Content Include="Areas\UserPanel\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Dashboard\AccountSetting.cshtml" />
+    <Content Include="Areas\UserPanel\Views\Dashboard\ChangePassword.cshtml" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Bold.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Bold.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Bold.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Bold.woff2" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Boldd41d.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Light.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Light.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Light.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Light.woff2" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Lightd41d.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Medium.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Medium.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Medium.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Medium.woff2" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\fonts\IRANSansWeb_Mediumd41d.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\css\bootstrap-select.css.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\bootstrap-select.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\bootstrap-select.min.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-am_ET.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ar_AR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-bg_BG.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-cs_CZ.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-da_DK.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-de_DE.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-en_US.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_CL.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-es_ES.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-et_EE.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-eu.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fa_IR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fi_FI.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-fr_FR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hr_HR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-hu_HU.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-id_ID.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-it_IT.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ja_JP.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-kh_KM.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ko_KR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lt_LT.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-lv_LV.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nb_NO.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-nl_NL.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pl_PL.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_BR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-pt_PT.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ro_RO.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ru_RU.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sk_SK.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sl_SI.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sr_SP.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-sv_SE.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-th_TH.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-tr_TR.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-ua_UA.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-vi_VN.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_CN.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\select\js\i18n\defaults-zh_TW.js.map" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfont3e6e3e6e.woff2" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\fontawesome\fonts\fontawesome-webfontd41dd41d.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\summernote\font\summernotec360c360.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\summernote\font\summernotec360c360.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\summernote\font\summernotec360c360.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\fonts\themify.woff" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\fonts\themify9f249f24.eot" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\fonts\themify9f249f24.ttf" />
+    <Content Include="Areas\Dashboard\Admin_Content_Dashboard\assets\vendors\themify\fonts\themifyd41dd41d.eot" />
+    <Content Include="Areas\Dashboard\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\DailyDetail.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\wellcomeuser.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\Dashboard_Layout.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Teachers\SendNotification.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Users\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Users\Details.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\web.config" />
+    <Content Include="Areas\Admin\Views\CourseSearch\Notifications.cshtml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Subscribe.cshtml" />
+    <Content Include="Views\Home\RecentArticles.cshtml" />
+    <Content Include="Views\Home\popularCategory.cshtml" />
+    <Content Include="Views\Home\FeaturedCourses.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Account\_SuccessRegister.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\_SuccesForgotPassword.cshtml" />
+    <Content Include="Views\Account\RecoveryPassword.cshtml" />
+    <Content Include="Views\Account\ActiveUser.cshtml" />
+    <Content Include="Views\Email\ActivationEmail.cshtml" />
+    <Content Include="Views\Email\RecoveryPassword.cshtml" />
+    <Content Include="Views\Shared\_Login&amp;Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Notifications\" />
+    <Folder Include="Areas\Dashboard\Data\" />
+    <Folder Include="Areas\UserPanel\Data\" />
+    <Folder Include="Areas\UserPanel\Views\Shared\" />
+    <Folder Include="Images\Student\" />
+    <Folder Include="Models\" />
+    <Folder Include="Videos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{c0d33523-2f4c-4604-a32b-0cc57cf47a3c}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58422</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44307/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,26 @@
+D:\visual studio 2013\Projects\DataLayer\bin\Debug\DataLayer.dll.config
+D:\visual studio 2013\Projects\DataLayer\bin\Debug\DataLayer.dll
+D:\visual studio 2013\Projects\DataLayer\bin\Debug\DataLayer.pdb
+D:\visual studio 2013\Projects\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\visual studio 2013\Projects\DataLayer\bin\Debug\EntityFramework.dll
+D:\visual studio 2013\Projects\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache
+D:\visual studio 2013\Projects\DataLayer\obj\Debug\DataLayer.csproj.CoreCompileInputs.cache
+D:\visual studio 2013\Projects\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\visual studio 2013\Projects\DataLayer\obj\Debug\DataLayer.dll
+D:\visual studio 2013\Projects\DataLayer\obj\Debug\DataLayer.pdb
+D:\saeed_code\lms\DataLayer\obj\Debug\DataLayer.dll
+D:\saeed_code\lms\DataLayer\obj\Debug\DataLayer.pdb
+D:\saeed_code\lms\DataLayer\bin\Debug\DataLayer.dll.config
+D:\saeed_code\lms\DataLayer\bin\Debug\DataLayer.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\DataLayer.pdb
+D:\saeed_code\lms\DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\EntityFramework.dll
+D:\saeed_code\lms\DataLayer\obj\Debug\DataLayer.csproj.CopyComplete
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.Mvc.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.Razor.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.Helpers.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.WebPages.Razor.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\System.Web.WebPages.dll
+D:\saeed_code\lms\DataLayer\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\saeed_code\lms\DataLayer\obj\Debug\DataLayer.csprojAssemblyReference.cache

@@ -1,0 +1,346 @@
+﻿@using DataLayer
+@model DataLayer.Courses
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+
+
+
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title">افزودن دوره</h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="/"><i class="fa fa-home"></i>خانه</a></li>
+                <li>افزودن دوره</li>
+            </ul>
+        </div>
+        <div class="row">
+            <!-- Your Profile Views Chart -->
+            <div class="col-lg-12 m-b30">
+                <div class="widget-box">
+                    <div class="wc-title">
+                        <h4>افزودن دوره</h4>
+                    </div>
+                    <div class="widget-inner">
+
+                        <div class="edit-profile m-b30">
+                            <div class="row">
+                                @using (Html.BeginForm("Edit", "Courses", FormMethod.Post, new { @class = "row", id = "CuorseForm", enctype = "multipart/form-data" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.CourseID)
+                                    @Html.HiddenFor(model => model.UserID)
+                                    @Html.HiddenFor(model => model.LastUpdate)
+                                    @Html.HiddenFor(model => model.NumberOfStudents)
+                                    @Html.HiddenFor(model => model.ImageName)
+                                    <div class="col-12">
+                                        <div class="ml-auto">
+                                            <h3>1. اطلاعات پایه</h3>
+                                        </div>
+                                        <h4>@Model.UserID</h4>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseName)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.Price)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseLevel)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseLevel, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseLevel, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.CourseStatus)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.CourseStatus, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CourseStatus, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.ImageName)
+                                        </label>
+                                        <div>
+                                            <input type="file" id="ImgUp" name="ImgUp" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="col-form-label">
+                                            نمایش تصویر
+                                        </label>
+                                        <div>
+                                            <img src="/Images/Courses/@Model.ImageName" style="max-width: 200px" id="ImgPre" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            انتخاب دسته بندی
+                                        </label>
+                                        <div>
+                                            @{
+                                                List<Categories> categories = ViewBag.categories;
+                                                List<Selected_Category> selectedGroup = ViewBag.SelectedGroups;
+
+                                                <select multiple name="SelectCategory" data-width="400px" data-live-search="true" title="انتخاب کنید" class="selectpicker">
+                                                    @foreach (var item in categories)
+                                                    {
+                                                        <option data-tokens="@item.Name" value="@item.CategoryID" @((selectedGroup.Any(g => g.CategoryID == item.CategoryID)) ? "selected" : "")>@item.Name</option>
+
+                                                    }
+                                                </select>
+                                            }
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="seperator"></div>
+
+                                    <div class="col-12 m-t20">
+                                        <div class="ml-auto m-b5">
+                                            <h3>2. توضیحات</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.ShortDescription)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="seperator"></div>
+                                    <div class="form-group col-12">
+                                        <label class="col-form-label">
+                                            @Html.LabelFor(model => model.Text)
+                                        </label>
+                                        <div>
+                                            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                }
+                                <div class="col-12 my-2">
+                                    @*<button type="button" class="btn-secondry  m-r5" onclick="AddItem()"><i class="fa fa-fw fa-plus-circle"></i>افزودن</button>*@
+                                    <button id="SaveChanges" onclick="submitCourses()" class="btn">ذخیره تغییرات</button>
+                                </div>
+                                <div class="col-12 m-t20">
+                                    <div class="ml-auto">
+                                        <h3 class="m-form__section">3. ویرایش ویدیوها </h3>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <table class="table" id="mytable">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">نام ویدیو</th>
+                                                <th scope="col"></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                List<SubCourse> subCourses = ViewBag.SubCourses;
+
+                                                foreach (var item in subCourses)
+                                                {
+                                                    <tr id="group_@item.SubCourseID">
+                                                        <th scope="row">@item.SubCourseTitle</th>
+                                                        <td>
+                                                            <a class="btn btn-outline-success" onclick="Edit(@item.SubCourseID)">ویرایش</a>
+                                                            <a class="btn btn-outline-danger" onclick="Delete(@item.SubCourseID)">حذف</a>
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Your Profile Views Chart END-->
+        </div>
+    </div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ویرایش ویدیو</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="myModalBody">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/Areas/Admin/Admin_Content/assets/js/jquery.form.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Text').summernote();
+        });
+
+        function submitCourses() {
+            $("#CuorseForm").submit();
+        }
+
+        function submitSubCourses() {
+            debugger;
+            if (IsValide().length === 0) {
+                SendAjax();
+                $("#CuorseSubForm").submit();
+            } else {
+                swal({
+                    title: "خطا",
+                    text: IsValide() + "وارد نشده اند",
+                    icon: "warning",
+                    button: "OK",
+                });
+            }
+
+        }
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ImgPre').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#ImgUp").change(function () {
+            readURL(this);
+        });
+
+        function SendAjax() {
+            debugger;
+            var bar = $('.progress-bar');
+            var percent = $('.progress-bar');
+            var status = $('#status');
+
+            $('#CuorseSubForm').ajaxForm({
+                beforeSend: function () {
+                    status.empty();
+                    var percentVal = '0%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                uploadProgress: function (event, position, total, percentComplete) {
+                    var percentVal = percentComplete + '%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                success: function () {
+                    var percentVal = '100%';
+                    bar.width(percentVal);
+                    percent.html(percentVal);
+                },
+                complete: function (xhr) {
+                    status.html(xhr.responseText);
+                    swal({
+                        text: "اطلاعات با موفقیت ذخیره شد",
+                        icon: "success",
+                        button: "OK",
+                    });
+                    location.reload();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('#mytable').DataTable();
+        });
+
+        function IsValide() {
+            //alert(id);
+            var Error = '';
+            var description = $("#SubCourseDescription").val();
+            var courseName = $("#SubCourseTitle").val();
+            if (description === '') Error = "توضیح و";
+            if (courseName === '') Error += " نام و ";
+            return Error;
+        }
+
+        function Edit(id) {
+            $.get("/Admin/Courses/EditSubCourses/" + id,
+                function (result) {
+                    $("#myModal").modal({backdrop: 'static', keyboard: false});
+                    $("#myModalBody").html(result);
+                });
+        }
+        function Delete(id) {
+            swal({
+                title: "آیا از حذف مطئن هستید؟",
+                text: "بعد از حذف امکان بازگشت وجود ندارد",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.get("/Admin/Courses/DeleteSubCourses/" + id,
+                            function () {
+                                $("#group_" + id).hide('slow');
+                            });
+                        swal("حذف با موفقیت انجام شد", {
+                            icon: "success",
+                        });
+                    }
+                });
+
+        }
+    </script>
+}
+
+
+
+
+
+

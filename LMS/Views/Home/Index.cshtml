@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@section Subscribe{ @Html.Action("Subscribe", "Home") }
+@section RecentArticles{ @Html.Action("RecentArticles", "Home") }
+@section PopularCategory{ @Html.Action("popularCategory", "Home") }
+@section FeaturedCourses{ @Html.Action("FeaturedCourses", "Home") }
+@section Search{ @Html.Action("Search", "Home") }
+

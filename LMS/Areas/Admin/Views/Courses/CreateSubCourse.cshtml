@@ -1,0 +1,99 @@
+﻿@model DataLayer.SubCourse
+
+
+<div class="col-12">
+    <table id="item-add" style="width: 100%;">
+        <tbody id="table_add">
+            <tr class="list-item" id="Tr_">
+                <td>
+                    @using (Html.BeginForm("CreateSubCourse", "Courses", FormMethod.Post, new { @class = "CuorseSubForm", id = "CuorseSubForm_0", enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CourseID)
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="col-form-label">
+                                    @Html.LabelFor(model => model.SubCourseTitle)
+                                </label>
+                                <div>
+                                    @Html.EditorFor(model => model.SubCourseTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SubCourseTitle, "", new { @class = "text-danger" })
+                                    @*<input class="form-control" onclick="IsValide(0)" id="SubCourseTitle_0" name="SubCourseTitle" type="text">*@
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-form-label">
+                                    @Html.LabelFor(model => model.VideoName)
+                                </label>
+                                <div>
+                                    <input type="file" id="VideoUp_0" onclick="IsValide(0)" name="VideoUp" />
+                                    @Html.ValidationMessageFor(model => model.SubCourseTitle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="col-form-label">نوار پیشرفت</label>
+                                <div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="progress-bar_0">
+                                            ۰ %
+                                        </div>
+                                    </div>
+                                    <div id="status">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="col-form-label">
+                                    @Html.LabelFor(model => model.CashOrFree)
+                                </label>
+                                <div>
+                                    @Html.EditorFor(model => model.CashOrFree)
+                                    @Html.ValidationMessageFor(model => model.CashOrFree, "", new { @class = "text-danger" })
+                                    @*<input id="CashOrFree" type="checkbox" value="true" name="CashOrFree" />
+                                        <input type="hidden" value="false" name="CashOrFree" />*@
+
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="col-form-label">بستن</label>
+                                <div class="form-group">
+                                    <a class="delete" onclick="DeleteTr()"><i class="fa fa-close"></i></a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-11">
+                                <label class="col-form-label">
+                                    @Html.LabelFor(model => model.SubCourseDescription)
+                                </label>
+                                <div>
+                                    @Html.EditorFor(model => model.SubCourseDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.SubCourseDescription, "", new { @class = "text-danger" })
+                                    @*<textarea class="form-control" type="text" onclick="IsValide(0)" id="SubCourseDescription" name="SubCourseDescription"></textarea>*@
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="col-form-label">افزودن</label>
+                                <div class="form-group">
+                                    <a class="create" onclick="submitSubCourses()"><i class="fa fa-check"></i></a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="col-12 my-2">
+    <button type="button" class="btn-secondry  m-r5" onclick="AddItem()"><i class="fa fa-fw fa-plus-circle"></i>افزودن</button>
+</div>
+
+
+
