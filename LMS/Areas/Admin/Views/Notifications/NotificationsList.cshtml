@@ -1,17 +1,29 @@
 ﻿@model IEnumerable<DataLayer.Notifications>
-    @{
-        ViewBag.Title = "اطلاعیه ها";
-        Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
-    }
-    
-    <main class="ttr-wrapper">
-        <div class="container-fluid">
-            <div class="db-breadcrumb">
-                <h4 class="breadcrumb-title">اطلاعیه ها </h4>
-                <ul class="db-breadcrumb-list">
-                    <li><a href="/admin"><i class="fa fa-home"></i>خانه</a></li>
-                    <li>اطلاعیه ها </li>
-                </ul>
+@{
+    ViewBag.Title = "اطلاعیه ها";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title">اطلاعیه ها </h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="/admin"><i class="fa fa-home"></i>خانه</a></li>
+                <li>اطلاعیه ها </li>
+            </ul>
+        </div>
+        @using (Html.BeginForm("NotificationsList", "Notifications", FormMethod.Get, new { id = "NotificationsListForm" }))
+        {
+            <div class="row mb-3">
+                <div class=" col-md-10">
+                    <input class="form-control" type="text" value="@ViewBag.Search" name="q" placeholder="جستوجو" aria-label="Search">
+                </div>
+                <div class=" col-md-2">
+                    <a href="#" class="btn blue radius-xl outline" onclick="SetPage(1)">جستو جو</a>
+
+                </div>
+
             </div>
             <div class="row">
                 <!-- Your Profile Views Chart -->
@@ -53,27 +65,36 @@
                                     </div>
                                 </div>
                             }
-
+                            <input type="hidden" id="pageid" value="@ViewBag.pageid" name="pageid" />
+                            <nav aria-label="...">
+                                <ul class="pagination pagination-sm">
+                                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                    {
+                                        <li class="page-item @(ViewBag.pageid == i ? "active" : "")"><a class="page-link" onclick="SetPage(@i)">@i</a></li>
+                                    }
+                                </ul>
+                            </nav>
 
                         </div>
                     </div>
                 </div>
                 <!-- Your Profile Views Chart END-->
             </div>
-        </div>
-    </main>
+        }
+    </div>
+</main>
 
 @section Scripts
 {
     <script>
         function Delete(id) {
             swal({
-                    title: "آیا از حذف مطئن هستید؟",
-                    text: "بعد از حذف امکان بازگشت وجود ندارد",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
+                title: "آیا از حذف مطئن هستید؟",
+                text: "بعد از حذف امکان بازگشت وجود ندارد",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
                 .then((willDelete) => {
                     if (willDelete) {
                         $.get("/Admin/CourseSearch/DeleteNotification/" + id,
@@ -87,6 +108,9 @@
                 });
 
         }
-
+        function SetPage(id) {
+            $("#pageid").val(id);
+            $("#NotificationsListForm").submit();
+        }
     </script>
 }

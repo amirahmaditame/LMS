@@ -26,10 +26,15 @@ namespace LMS.Areas.Admin.Controllers
             return PartialView(notifications.ToList());
         }
 
-        public ActionResult NotificationsList()
+        public ActionResult NotificationsList(string q = "", int take = 1, int pageid = 1)
         {
-            var NotificationsList = _notificationRepository.GetAllnotificationsByUser(User.Identity.Name);
-            return View(NotificationsList);
+            var NotificationsList = _notificationRepository.GetAllnotificationsByUser(User.Identity.Name,q);
+            int skip = (pageid - 1) * take;
+            ViewBag.PageCount = NotificationsList.Count() / take;
+            ViewBag.pageid = pageid;
+            ViewBag.Search = q;
+
+            return View(NotificationsList.Distinct().Skip(skip).Take(take).ToList());
         }
 
         public void DeleteNotification(int id)
