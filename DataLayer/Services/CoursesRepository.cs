@@ -49,8 +49,9 @@ namespace DataLayer.Services
         {
             _db.Dispose();
         }
-        public IEnumerable<CoursesListViewModel> GetAllCourses()
+        public IEnumerable<CoursesListViewModel> GetAllCourses(string q = "", int take = 1,int skip=1)
         {
+            List<CoursesListViewModel> CoursesList = new List<CoursesListViewModel>();
             var AllCourses = _db.Courses.Select(x => new CoursesListViewModel()
             {
                 CourseID = x.CourseID,
@@ -69,8 +70,9 @@ namespace DataLayer.Services
                 DiscountValue = x.Discount.Value.Value,
                 CategoryName = x.Selected_Category.Select(c=>c.Categories.Name).ToList()
             }).ToList();
+            CoursesList.AddRange(AllCourses.Where(p => p.CourseName.Contains(q) || p.Text.Contains(q)));
 
-            return AllCourses;
+            return AllCourses.Skip(skip).Take(take).ToList();
         }
 
         public Courses GetCourseById(int courseId)
