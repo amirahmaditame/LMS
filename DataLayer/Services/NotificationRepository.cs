@@ -56,11 +56,14 @@ namespace DataLayer.Services
             return _db.Notifications.Find(id);
         }
 
-        public IEnumerable<Notifications> GetAllnotifications()
+        public IEnumerable<Notifications> GetAllnotificationsByUser(string username)
         {
+            return _db.Notifications.Where(n => n.Users.UserName == username);
+        }
 
-            return _db.Notifications.ToList();
-           
+        public IEnumerable<Notifications> GetAllnotificationsByUserNotRead(string username)
+        {
+            return _db.Notifications.Where(n => n.Users.UserName == username && n.IsRead == false);
         }
 
         public bool InsertNotifications(Notifications item)

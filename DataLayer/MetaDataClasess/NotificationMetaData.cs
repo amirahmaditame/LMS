@@ -20,6 +20,7 @@ namespace DataLayer
         [DataType(DataType.MultilineText)]
         public string NotificationText { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0 : yyyy/mm/d}")]
         public System.DateTime NotificationDate { get; set; }
         public int UserID { get; set; }
     }

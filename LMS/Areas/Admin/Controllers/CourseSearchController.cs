@@ -22,8 +22,20 @@ namespace LMS.Areas.Admin.Controllers
         // GET: Admin/CourseSearch
         public ActionResult Notifications()
         {
-            //var notification = _notificationRepository.
-            return View();
+            var notifications = _notificationRepository.GetAllnotificationsByUserNotRead(User.Identity.Name);
+            return PartialView(notifications.ToList());
+        }
+
+        public ActionResult NotificationsList()
+        {
+            var NotificationsList = _notificationRepository.GetAllnotificationsByUser(User.Identity.Name);
+            return View(NotificationsList);
+        }
+
+        public void DeleteNotification(int id)
+        {
+            _notificationRepository.DeleteNotifications(id);
+            _notificationRepository.save();
         }
     }
 }

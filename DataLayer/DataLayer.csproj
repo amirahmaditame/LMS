@@ -86,8 +86,8 @@
     <Compile Include="Repositories\ISubCoursesRepository.cs" />
     <Compile Include="Repositories\ITeacherRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
-    <Compile Include="Repositories\NotificationRepository.cs" />
-    <Compile Include="Repositories\TeacherRepository.cs" />
+    <Compile Include="Services\NotificationRepository.cs" />
+    <Compile Include="Services\TeacherRepository.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>LMSDataModel.tt</DependentUpon>
     </Compile>
