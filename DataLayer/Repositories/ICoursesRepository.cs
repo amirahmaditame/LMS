@@ -9,7 +9,7 @@ namespace DataLayer.Repositories
 {
     public interface ICoursesRepository:IDisposable
     {
-        IEnumerable<CoursesListViewModel> GetAllCourses(string q = "", int take = 1,int skip=1);
+        IEnumerable<CoursesListViewModel> GetAllCourses(string q="");
         Courses GetCourseById(int courseId);
         Users GetTeacherForCourses(string username);
         bool InsertCourse(Courses courses);
