@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "rraH2C6zCla4KzbNQcKTv5ueXVQk8flbFDubG8tbJEDAhMT+8SRodQ9mtSX2BcutEffdFrrLPXufBcbXk/V/XA==",
+  "dgSpecHash": "jWBC+jaIVMo/RtJGQpbVpTZnkoxwJyAPkChvPf+5lJAmG6APz3nNxHRrCokt/UOtn9hh9ht3T76U7XQ2ufXgUg==",
   "success": true,
-  "projectFilePath": "D:\\visual studio 2013\\Projects\\DataLayer\\DataLayer.csproj",
+  "projectFilePath": "D:\\Users\\Batman\\Documents\\GitHub\\LMS\\LMS\\DataLayer\\DataLayer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Batman\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512"
+    "C:\\Users\\Batman\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\Batman\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
+    "C:\\Users\\Batman\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
+    "C:\\Users\\Batman\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.7\\microsoft.aspnet.webpages.3.2.7.nupkg.sha512",
+    "C:\\Users\\Batman\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

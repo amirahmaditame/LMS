@@ -82,11 +82,13 @@
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\ICoursesRepository.cs" />
     <Compile Include="Repositories\INotificationRepository.cs" />
+    <Compile Include="Repositories\ISearchRepository.cs" />
     <Compile Include="Repositories\ISelectedCategoryRepository.cs" />
     <Compile Include="Repositories\ISubCoursesRepository.cs" />
     <Compile Include="Repositories\ITeacherRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\NotificationRepository.cs" />
+    <Compile Include="Services\SearchRepository.cs" />
     <Compile Include="Services\TeacherRepository.cs" />
     <Compile Include="Roles.cs">
       <DependentUpon>LMSDataModel.tt</DependentUpon>

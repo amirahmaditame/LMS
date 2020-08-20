@@ -409,24 +409,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\Batman\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj",
+      "projectUniqueName": "D:\\Users\\Batman\\Documents\\GitHub\\LMS\\LMS\\DataLayer\\DataLayer.csproj",
       "projectName": "DataLayer",
-      "projectPath": "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\saeed_code\\Github\\LMS\\DataLayer\\obj\\",
+      "projectPath": "D:\\Users\\Batman\\Documents\\GitHub\\LMS\\LMS\\DataLayer\\DataLayer.csproj",
+      "packagesPath": "C:\\Users\\Batman\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\Batman\\Documents\\GitHub\\LMS\\LMS\\DataLayer\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Batman\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -435,6 +435,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://nuget.org": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

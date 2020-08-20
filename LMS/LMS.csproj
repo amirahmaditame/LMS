@@ -154,6 +154,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -834,6 +835,7 @@
     <Content Include="Areas\Dashboard\Views\web.config" />
     <Content Include="Areas\Admin\Views\Notifications\Notifications.cshtml" />
     <Content Include="Areas\Admin\Views\Notifications\NotificationsList.cshtml" />
+    <Content Include="fonts\iransans.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -875,6 +877,9 @@
     <Content Include="Views\Email\ActivationEmail.cshtml" />
     <Content Include="Views\Email\RecoveryPassword.cshtml" />
     <Content Include="Views\Shared\_Login&amp;Register.cshtml" />
+    <Content Include="Views\Shared\_PageInnerLayout.cshtml" />
+    <Content Include="Views\Shared\_SingleCourse.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

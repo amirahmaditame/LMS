@@ -279,7 +279,7 @@
     <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="NotificationTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
     <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
     <Property Name="IsRead" Type="Boolean" Nullable="false" />

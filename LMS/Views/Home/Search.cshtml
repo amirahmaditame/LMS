@@ -5,8 +5,12 @@
     <div class="container">
 
         <div class="hero-caption small_wd mb-5">
-            <h1 class="big-header-capt cl_2 mb-0">Learn on your schedule</h1>
-            <p>Study any topic, anytime. Explore thousands of courses for the lowest price ever!</p>
+            <h1 class="big-header-capt cl_2 mb-0">
+                خودآموزی ، کسب تجربه ، ورود به بازار کار با تاپ لرن
+            </h1>
+            <p>
+                با کمترینــــ هزینه خودت حرفه ایــــ یاد بگیـر
+            </p>
         </div>
         <!-- Type -->
         <div class="row">
@@ -15,14 +19,16 @@
                     <div class="search_hero_wrapping">
                         <div class="row">
 
+                            <form method="post" action="/Search">
                             <div class="col-lg-5 col-md-5 col-sm-12 br-right">
                                 <div class="form-group">
                                     <div class="input-with-icon">
-                                        <input type="text" class="form-control" placeholder="Keyword" />
+                                        <input name="q" type="text" class="form-control" placeholder="کلمه مورد نظر" />
                                         <img src="/Content/assets/img/search.svg" class="search-icon" alt="" />
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="col-lg-5 col-md-4 col-sm-12 small-pad">
                                 <div class="form-group">
@@ -42,10 +48,10 @@
 
                             <div class="col-lg-2 col-md-3 col-sm-12 pl-0">
                                 <div class="form-group none">
-                                    <a href="#" class="btn search-btn full-width">Search</a>
+                                    <button type="submit" class="btn search-btn full-width">جست و جو</button>
                                 </div>
                             </div>
-
+                           </form>
                         </div>
 
                     </div>

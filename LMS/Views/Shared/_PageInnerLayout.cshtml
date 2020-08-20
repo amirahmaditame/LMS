@@ -1,22 +1,20 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html lang="fa">
 
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="www.frebsite.nl" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>خودآموز امیر</title>
+    <title>@ViewBag.Title</title>
 
     <!-- Custom CSS -->
     <link href="/Content/assets/css/styles.css" rel="stylesheet">
-    <link href="~/Content/assets/css/custom-css.css" rel="stylesheet" />
+
     <!-- Custom Color Option -->
     <link href="/Content/assets/css/colors.css" rel="stylesheet">
+    <link href="~/Content/assets/css/custom-css.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet" />
-    
-
 
 </head>
 
@@ -37,11 +35,11 @@
         <!-- Top header  -->
         <!-- ============================================================== -->
         <!-- Start Navigation -->
-        <div class="header header-light">
+        <div class="header header-light head-shadow">
             <div class="container">
                 <nav id="navigation" class="navigation navigation-landscape">
                     <div class="nav-header">
-                        <a class="nav-brand" href="/">
+                        <a class="nav-brand" href="#">
                             <img src="/Content/assets/img/logo.png" class="logo" alt="" />
                         </a>
                         <div class="nav-toggle"></div>
@@ -142,27 +140,14 @@
         </div>
         <!-- End Navigation -->
         <div class="clearfix"></div>
+
         @RenderBody()
+
         <!-- ============================================================== -->
         <!-- Top header  -->
         <!-- ============================================================== -->
-        <!-- ============================ Hero Banner  Start================================== -->
-        @RenderSection("Search", false)
-
-        <!-- ============================ Featured Courcses Start ================================== -->
-        @RenderSection("FeaturedCourses", false)
-        <!-- ============================ Featured Courcses End ================================== -->
-        <!-- ============================ Featured Category Start ================================== -->
-        @RenderSection("PopularCategory", false)
-        <!-- ============================ Featured Category End ================================== -->
-        <!-- ========================== Articles Section =============================== -->
-        @RenderSection("RecentArticles", false)
-        <!-- ========================== Articles Section =============================== -->
-        <!-- ============================== Start Newsletter ================================== -->
-        @RenderSection("Subscribe", false)
-        <!-- ================================= End Newsletter =============================== -->
         <!-- ============================ Footer Start ================================== -->
-        <footer class="light-footer">
+        <footer class="dark-footer skin-dark-footer">
             <div>
                 <div class="container">
                     <div class="row">
@@ -366,6 +351,7 @@
         </div>
         <!-- End Modal -->
 
+
         <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 
 
@@ -404,11 +390,17 @@
             }
         }
     </script>
+    <script>
+        function openNav() {
+            document.getElementById("filter-sidebar").style.width = "320px";
+        }
 
+        function closeNav() {
+            document.getElementById("filter-sidebar").style.width = "0";
+        }
+    </script>
     @RenderSection("Scripts", false)
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
+
 
 </body>
 

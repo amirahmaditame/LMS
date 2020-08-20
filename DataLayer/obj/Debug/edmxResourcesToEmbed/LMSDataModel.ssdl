@@ -38,10 +38,10 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
       <PropertyRef Name="NotificationID" />
     </Key>
     <Property Name="NotificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="NotificationTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="NotificationText" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="NotificationText" Type="nvarchar" MaxLength="450" Nullable="false" />
     <Property Name="NotificationDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="IsRead" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
@@ -71,22 +71,18 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
     <Property Name="CashOrFree" Type="bit" Nullable="false" />
     <Property Name="VideoName" Type="nvarchar" MaxLength="150" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LearningDB.dbo.Teachers_PF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Teachers_PF">
-    <Key>
-      <PropertyRef Name="Teacher_PFID" />
-    </Key>
-    <Property Name="Teacher_PFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="150" />
     <Property Name="City" Type="nvarchar" MaxLength="150" />
     <Property Name="Education" Type="nvarchar" MaxLength="150" />
     <Property Name="ImageName" Type="varchar" MaxLength="250" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LearningDB.dbo.User_PF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="User_PF">
-    <Key>
-      <PropertyRef Name="User_PFID" />
-    </Key>
-    <Property Name="User_PFID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="PhoneNumber" Type="varchar" MaxLength="150" />
     <Property Name="WebSite" Type="varchar" MaxLength="350" />
@@ -192,7 +188,7 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
   </Association>
   <Association Name="FK_Teachers_PF_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="Teachers_PF" Type="Self.Teachers_PF" Multiplicity="*" />
+    <End Role="Teachers_PF" Type="Self.Teachers_PF" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="UserID" />
@@ -204,7 +200,7 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
   </Association>
   <Association Name="FK_User_PF_Users">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
-    <End Role="User_PF" Type="Self.User_PF" Multiplicity="*" />
+    <End Role="User_PF" Type="Self.User_PF" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="UserID" />
@@ -233,14 +229,30 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Selected_Category" EntityType="Self.Selected_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubCourse" EntityType="Self.SubCourse" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Teachers_PF" EntityType="Self.Teachers_PF" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User_PF" EntityType="Self.User_PF" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount" EntityType="Self.Discount" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Discount].[CourseID] AS [CourseID], 
     [Discount].[Value] AS [Value]
     FROM [dbo].[Discount] AS [Discount]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Teachers_PF" EntityType="Self.Teachers_PF" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Teachers_PF].[UserID] AS [UserID], 
+    [Teachers_PF].[PhoneNumber] AS [PhoneNumber], 
+    [Teachers_PF].[City] AS [City], 
+    [Teachers_PF].[Education] AS [Education], 
+    [Teachers_PF].[ImageName] AS [ImageName]
+    FROM [dbo].[Teachers_PF] AS [Teachers_PF]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="User_PF" EntityType="Self.User_PF" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [User_PF].[UserID] AS [UserID], 
+    [User_PF].[PhoneNumber] AS [PhoneNumber], 
+    [User_PF].[WebSite] AS [WebSite], 
+    [User_PF].[Biography] AS [Biography], 
+    [User_PF].[ImageName] AS [ImageName]
+    FROM [dbo].[User_PF] AS [User_PF]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Categories_Categories" Association="Self.FK_Categories_Categories">
       <End Role="Categories" EntitySet="Categories" />

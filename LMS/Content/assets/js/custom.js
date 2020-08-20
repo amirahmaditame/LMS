@@ -421,7 +421,7 @@ $(function() {
 	
 	// Select Job category
 	$('#c-category').select2({
-		placeholder: "Choose Category",
+		placeholder: "انتخاب دسته بندی",
 		allowClear: true
 	});
 	

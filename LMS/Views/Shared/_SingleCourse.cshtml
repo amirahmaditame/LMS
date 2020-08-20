@@ -1,0 +1,39 @@
+﻿@model DataLayer.ViewModels.SearchCoursesListViewModel
+<div class="row">
+
+    <!-- Cource Grid 1 -->
+    <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="education_block_grid style_2">
+
+            <div class="education_block_thumb n-shadow">
+                <a href="course-detail.html"><img src="~/Images/Courses/@Model.ImageName" class="img-fluid" alt="@Model.CourseName"></a>
+                <div class="cources_price">@Model.Price</div>
+            </div>
+
+            <div class="education_block_body">
+                <h4 class="bl-title"><a href="course-detail.html">@Model.CourseName</a></h4>
+            </div>
+
+            <div class="cources_info_style3">
+                <ul>
+                    <li><i class="ti-eye mr-2"></i>8682 Views</li>
+                    <li><i class="ti-time mr-2"></i>6h 40min</li>
+                    <li><i class="ti-star text-warning mr-2"></i>4.7 Reviews</li>
+                </ul>
+            </div>
+
+            <div class="education_block_footer">
+                <div class="education_block_author">
+                    <div class="path-img"><a href="instructor-detail.html"><img src="/Content/assets/img/user-1.jpg" class="img-fluid" alt=""></a></div>
+                    <h5><a href="instructor-detail.html">Robert Wilson</a></h5>
+                </div>
+                <div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>54 lectures</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Cource Grid 1 -->
+
+
+</div>
