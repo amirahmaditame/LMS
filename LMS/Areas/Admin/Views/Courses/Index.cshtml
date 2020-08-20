@@ -14,14 +14,14 @@
                 <li>دوره‌ها</li>
             </ul>
         </div>
-        @using (Html.BeginForm("Index","Courses"))
+        @using (Html.BeginForm("Index", "Courses",FormMethod.Get,new {id="CourseListForm"}))
         {
             <div class="row mb-3">
                 <div class=" col-md-10">
-                    <input class="form-control" type="text" name="q" placeholder="جستوجو" aria-label="Search">
+                    <input class="form-control" type="text" value="@ViewBag.Search" name="q" placeholder="جستوجو" aria-label="Search">
                 </div>
                 <div class=" col-md-2">
-                    <a href="#" class="btn blue radius-xl outline">جستو جو</a>
+                    <a href="#" class="btn blue radius-xl outline" onclick="SetPage(1)">جستو جو</a>
 
                 </div>
 
@@ -100,14 +100,13 @@
                                 </div>
 
                             }
-                            <input type="hidden" name="pageid"/>
+                            <input type="hidden" id="pageid" value="@ViewBag.pageid" name="pageid" />
                             <nav aria-label="...">
                                 <ul class="pagination pagination-sm">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                    {
+                                        <li class="page-item @(ViewBag.pageid == i ? "active" : "")"><a class="page-link"  onclick="SetPage(@i)">@i</a></li>
+                                    }
                                 </ul>
                             </nav>
 
@@ -320,6 +319,11 @@
 
         function DeleteTr(id) {
             $("#Tr_" + id).remove();
+        }
+
+        function SetPage(id) {
+            $("#pageid").val(id);
+            $("#CourseListForm").submit();
         }
     </script>
 }

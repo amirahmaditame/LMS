@@ -49,7 +49,7 @@ namespace DataLayer.Services
         {
             _db.Dispose();
         }
-        public IEnumerable<CoursesListViewModel> GetAllCourses(string q = "", int take = 1,int skip=1)
+        public IEnumerable<CoursesListViewModel> GetAllCourses(string q)
         {
             List<CoursesListViewModel> CoursesList = new List<CoursesListViewModel>();
             var AllCourses = _db.Courses.Select(x => new CoursesListViewModel()
@@ -65,14 +65,14 @@ namespace DataLayer.Services
                 Price = x.Price,
                 Text = x.Text,
                 ImageName = x.ImageName,
-                TeacherImageName = x.Users.Teachers_PF.Select(y=>y.ImageName).ToList().FirstOrDefault(),
+                TeacherImageName = x.Users.Teachers_PF.Select(y => y.ImageName).ToList().FirstOrDefault(),
                 Teachername = x.Users.UserName,
                 DiscountValue = x.Discount.Value.Value,
-                CategoryName = x.Selected_Category.Select(c=>c.Categories.Name).ToList()
+                CategoryName = x.Selected_Category.Select(c => c.Categories.Name).ToList()
             }).ToList();
-            CoursesList.AddRange(AllCourses.Where(p => p.CourseName.Contains(q) || p.Text.Contains(q)));
+            CoursesList.AddRange(AllCourses.Where(p => p.CourseName.Contains(q) || p.Text.Contains(q) || p.ShortDescription.Contains(q)));
 
-            return AllCourses.Skip(skip).Take(take).ToList();
+            return CoursesList.ToList();
         }
 
         public Courses GetCourseById(int courseId)
@@ -82,7 +82,7 @@ namespace DataLayer.Services
 
         public Users GetTeacherForCourses(string username)
         {
-            return _db.Users.SingleOrDefault(c=>c.UserName == username);
+            return _db.Users.SingleOrDefault(c => c.UserName == username);
         }
 
         public bool InsertCourse(Courses courses)
