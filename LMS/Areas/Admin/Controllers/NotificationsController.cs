@@ -9,13 +9,13 @@ using DataLayer.Services;
 
 namespace LMS.Areas.Admin.Controllers
 {
-    public class CourseSearchController : Controller
+    public class NotificationsController : Controller
     {
         private LearningDBEntities db = new LearningDBEntities();
 
         private INotificationRepository _notificationRepository;
 
-        public CourseSearchController()
+        public NotificationsController()
         {
             _notificationRepository = new NotificationRepository(db);
         }

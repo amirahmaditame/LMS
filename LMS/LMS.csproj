@@ -142,7 +142,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CoursesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CourseSearchController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NotificationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CategoriesController.cs" />
@@ -832,8 +832,8 @@
     <Content Include="Areas\Dashboard\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Dashboard\Views\Users\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\web.config" />
-    <Content Include="Areas\Admin\Views\CourseSearch\Notifications.cshtml" />
-    <Content Include="Areas\Admin\Views\CourseSearch\NotificationsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Notifications\Notifications.cshtml" />
+    <Content Include="Areas\Admin\Views\Notifications\NotificationsList.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -878,7 +878,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Notifications\" />
     <Folder Include="Areas\Dashboard\Data\" />
     <Folder Include="Areas\UserPanel\Data\" />
     <Folder Include="Areas\UserPanel\Views\Shared\" />
