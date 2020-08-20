@@ -181,6 +181,7 @@
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\alert.css" />
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\breadcrumb.css" />
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\button.css" />
+    <Content Include="Areas\Admin\Admin_Content\assets\css\Custom-Css.css" />
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\divider.css" />
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\form.css" />
     <Content Include="Areas\Admin\Admin_Content\assets\css\shortcodes\icon-box.css" />
@@ -832,6 +833,7 @@
     <Content Include="Areas\Dashboard\Views\Users\Index.cshtml" />
     <Content Include="Areas\Dashboard\Views\web.config" />
     <Content Include="Areas\Admin\Views\CourseSearch\Notifications.cshtml" />
+    <Content Include="Areas\Admin\Views\CourseSearch\NotificationsList.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

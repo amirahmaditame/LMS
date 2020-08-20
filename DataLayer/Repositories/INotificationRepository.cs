@@ -8,7 +8,8 @@ namespace DataLayer.Repositories
 {
    public interface INotificationRepository:IDisposable
     {
-        IEnumerable<Notifications> GetAllnotifications();
+        IEnumerable<Notifications> GetAllnotificationsByUser(string username);
+        IEnumerable<Notifications> GetAllnotificationsByUserNotRead(string username);
         Notifications FindNotificationsByID(int id);
         bool InsertNotifications(Notifications item);
         bool UpdateNotifications(Notifications item);
