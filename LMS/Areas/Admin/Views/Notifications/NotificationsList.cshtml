@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DataLayer.Notifications>
+@{
+    ViewBag.Title = "اطلاعیه ها";
+    Layout = "~/Areas/Admin/Views/Shared/Admin_Layout.cshtml";
+}
+
+<main class="ttr-wrapper">
+    <div class="container-fluid">
+        <div class="db-breadcrumb">
+            <h4 class="breadcrumb-title">اطلاعیه ها </h4>
+            <ul class="db-breadcrumb-list">
+                <li><a href="/admin"><i class="fa fa-home"></i>خانه</a></li>
+                <li>اطلاعیه ها </li>
+            </ul>
+        </div>
+        @using (Html.BeginForm("NotificationsList", "Notifications", FormMethod.Get, new { id = "NotificationsListForm" }))
+        {
+            <div class="row mb-3">
+                <div class=" col-md-10">
+                    <input class="form-control" type="text" value="@ViewBag.Search" name="q" placeholder="جستوجو" aria-label="Search">
+                </div>
+                <div class=" col-md-2">
+                    <a href="#" class="btn blue radius-xl outline" onclick="SetPage(1)">جستو جو</a>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <!-- Your Profile Views Chart -->
+                <div class="col-lg-12 m-b30">
+                    <div class="widget-box">
+                        <div class="wc-title">
+                            <h4>اطلاعیه ها </h4>
+                        </div>
+                        <div class="widget-inner">
+                            @foreach (var item in Model)
+                            {
+                                <div class="card-courses-list admin-review" id="group_@item.NotificationID">
+                                    <div class="card-courses-full-dec">
+                                        <div class="card-courses-title">
+                                            <h4>@item.NotificationTitle</h4>
+                                        </div>
+                                        <div class="card-courses-list-bx">
+                                            <ul class="card-courses-view">
+                                                <li class="card-courses-user">
+                                                    <div class="card-courses-user-info">
+                                                        <h5>نویسنده</h5>
+                                                        <h4>مدیریت</h4>
+                                                    </div>
+                                                </li>
+                                                <li class="card-courses-categories">
+                                                    <h5>تاریخ</h5>
+                                                    <h4>@item.NotificationDate.ToShamsi()</h4>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row card-courses-dec">
+                                            <div class="col-md-12">
+                                                <p>@item.NotificationText</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <a href="#" onclick="Delete(@item.NotificationID)" class="btn">حذف </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <input type="hidden" id="pageid" value="@ViewBag.pageid" name="pageid" />
+                            <nav aria-label="...">
+                                <ul class="pagination pagination-sm">
+                                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                                    {
+                                        <li class="page-item @(ViewBag.pageid == i ? "active" : "")"><a class="page-link" onclick="SetPage(@i)">@i</a></li>
+                                    }
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Your Profile Views Chart END-->
+            </div>
+        }
+    </div>
+</main>
+
+@section Scripts
+{
+    <script>
+        function Delete(id) {
+            swal({
+                title: "آیا از حذف مطئن هستید؟",
+                text: "بعد از حذف امکان بازگشت وجود ندارد",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.get("/Admin/CourseSearch/DeleteNotification/" + id,
+                            function () {
+                                $("#group_" + id).hide('slow');
+                            });
+                        swal("حذف با موفقیت انجام شد", {
+                            icon: "success",
+                        });
+                    }
+                });
+
+        }
+        function SetPage(id) {
+            $("#pageid").val(id);
+            $("#NotificationsListForm").submit();
+        }
+    </script>
+}

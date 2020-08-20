@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\saeed_code\\lms\\DataLayer\\DataLayer.csproj": {}
+    "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj": {}
   },
   "projects": {
-    "D:\\saeed_code\\lms\\DataLayer\\DataLayer.csproj": {
+    "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\saeed_code\\lms\\DataLayer\\DataLayer.csproj",
+        "projectUniqueName": "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj",
         "projectName": "DataLayer",
-        "projectPath": "D:\\saeed_code\\lms\\DataLayer\\DataLayer.csproj",
+        "projectPath": "D:\\saeed_code\\Github\\LMS\\DataLayer\\DataLayer.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "D:\\saeed_code\\lms\\DataLayer\\obj\\",
+        "outputPath": "D:\\saeed_code\\Github\\LMS\\DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

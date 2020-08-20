@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using DataLayer;
 using DataLayer.Repositories;
 using DataLayer.Services;
+using DataLayer.ViewModels;
 using KooyWebApp_MVC.Classes;
 
 namespace LMS.Areas.Admin.Controllers
@@ -31,10 +32,15 @@ namespace LMS.Areas.Admin.Controllers
         }
 
         // GET: Admin/Courses
-        public ActionResult Index()
+        public ActionResult Index(string q = "", int take = 1, int pageid = 1)
         {
-            var tset = _coursesRepository.GetAllCourses().ToList();
-            return View(_coursesRepository.GetAllCourses().ToList());
+            var CourseList = _coursesRepository.GetAllCourses(q);
+            int skip = (pageid - 1) * take;
+            ViewBag.PageCount = CourseList.Count() / take;
+            ViewBag.pageid = pageid;
+            ViewBag.Search = q;
+
+            return View(CourseList.Distinct().Skip(skip).Take(take).ToList());
         }
 
        
@@ -254,18 +260,23 @@ namespace LMS.Areas.Admin.Controllers
                 };
             }
         }
-
         public void DeleteSubCourses(int? id)
         {
             var SubCourse = _subCoursesRepository.FindSubCoursesByID(id.Value);
             _subCoursesRepository.DeleteSubCourses(SubCourse);
             _subCoursesRepository.save();
         }
+
+     
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
                 db.Dispose();
+                _categoryRepository.Dispose();
+                _coursesRepository.Dispose();
+                _selectedCategoryRepository.Dispose();
+                _subCoursesRepository.Dispose();
             }
             base.Dispose(disposing);
         }

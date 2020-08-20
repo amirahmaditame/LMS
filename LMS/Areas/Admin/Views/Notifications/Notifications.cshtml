@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DataLayer.Notifications>
+
+<li>
+    <a href="#" class="ttr-material-button ttr-submenu-toggle notification">
+        <span class="badge">@Model.Count()</span>
+        <i class="fa fa-bell"></i>
+    </a>
+    <div class="ttr-header-submenu noti-menu">
+        <div class="ttr-notify-header">
+            <span class="ttr-notify-text-top">@Model.Count() جدید</span>
+            <span class="ttr-notify-text">اطلاعیه کاربر </span>
+        </div>
+        <div class="noti-box-list">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <span class="notification-icon dashbg-green">
+                            <i class="fa fa-comments-o"></i>
+                        </span>
+                        <span class="notification-text">
+                            <a href="#" onclick="ReadNotif('@item.NotificationText')"><span> مدیریت </span></a>  یک پیام برای شما ارسال کرده است.
+
+                        </span>
+                        <span class="notification-time">
+                            <a href="#" class="fa fa-close"></a>
+                            <span> @item.NotificationDate.ToShamsi() </span>
+                        </span>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div>
+</li>
+
