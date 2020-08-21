@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="018cd3c4c60c43978c069eb997a21f27" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="LearningDBModel.Categories" Width="1.5" PointX="8" PointY="9.625" />
-        <EntityTypeShape EntityType="LearningDBModel.Courses" Width="1.5" PointX="9.625" PointY="4.25" />
-        <EntityTypeShape EntityType="LearningDBModel.Roles" Width="1.5" PointX="0.75" PointY="7.5" />
-        <EntityTypeShape EntityType="LearningDBModel.Selected_Category" Width="1.5" PointX="7.75" PointY="6.75" />
-        <EntityTypeShape EntityType="LearningDBModel.SubCourse" Width="1.5" PointX="10.5" PointY="9.125" />
-        <EntityTypeShape EntityType="LearningDBModel.Teachers_PF" Width="1.5" PointX="5.25" PointY="6" />
-        <EntityTypeShape EntityType="LearningDBModel.User_PF" Width="1.5" PointX="5.25" PointY="2.875" />
-        <EntityTypeShape EntityType="LearningDBModel.Users" Width="1.5" PointX="3" PointY="6.625" />
-        <EntityTypeShape EntityType="LearningDBModel.Discount" Width="1.5" PointX="12.125" PointY="4.625" />
+        <EntityTypeShape EntityType="LearningDBModel.Categories" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="LearningDBModel.Courses" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="LearningDBModel.Notifications" Width="1.5" PointX="5.25" PointY="12" />
+        <EntityTypeShape EntityType="LearningDBModel.Roles" Width="1.5" PointX="0.75" PointY="9.625" />
+        <EntityTypeShape EntityType="LearningDBModel.Selected_Category" Width="1.5" PointX="7.5" PointY="2.875" />
+        <EntityTypeShape EntityType="LearningDBModel.SubCourse" Width="1.5" PointX="7.5" PointY="8.5" />
+        <EntityTypeShape EntityType="LearningDBModel.Teachers_PF" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="LearningDBModel.User_PF" Width="1.5" PointX="5.25" PointY="9" />
+        <EntityTypeShape EntityType="LearningDBModel.Users" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="LearningDBModel.Discount" Width="1.5" PointX="7.5" PointY="6.25" />
         <AssociationConnector Association="LearningDBModel.FK_Categories_Categories" />
         <AssociationConnector Association="LearningDBModel.FK_Selected_Category_Categories" />
         <AssociationConnector Association="LearningDBModel.FK_Courses_Users" />
         <AssociationConnector Association="LearningDBModel.FK_Discount_Courses" />
         <AssociationConnector Association="LearningDBModel.FK_Selected_Category_Courses" />
         <AssociationConnector Association="LearningDBModel.FK_SubCourse_Courses" />
+        <AssociationConnector Association="LearningDBModel.FK_Notifications_Users" />
         <AssociationConnector Association="LearningDBModel.FK_Users_Roles" />
         <AssociationConnector Association="LearningDBModel.FK_Teachers_PF_Users" />
         <AssociationConnector Association="LearningDBModel.FK_User_PF_Users" />
-        <EntityTypeShape EntityType="LearningDBModel.Notifications" Width="1.5" PointX="5.25" PointY="9.25" />
-        <AssociationConnector Association="LearningDBModel.FK_Notifications_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

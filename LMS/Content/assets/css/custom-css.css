@@ -2,66 +2,73 @@
     float: right;
     direction: rtl;
 }
+
 @font-face {
     font-family: iransans;
     src: url(/fonts/iransans.ttf);
 }
-.nav-header
-{
-    float:right !important;
+
+.nav-header {
+    float: right !important;
 }
-.nav-menu-social
-{
-    float:left !important;
+
+.nav-menu-social {
+    float: left !important;
 }
-.nav-menu > li
-{
-    float:right !important;
+
+.nav-menu > li {
+    float: right !important;
 }
-.submenu-indicator
-{
-    float:left !important;
-    margin-right:4px !important;
+
+.submenu-indicator {
+    float: left !important;
+    margin-right: 4px !important;
 }
-.nav-dropdown > li > a
-{
-    text-align:right !important;
+
+.nav-dropdown > li > a {
+    text-align: right !important;
 }
+
 .nav-dropdown .submenu-indicator .submenu-indicator-chevron {
     transform: rotate(+136deg) !important;
 }
-.login-form{
-    direction:rtl !important;
+
+.login-form {
+    direction: rtl !important;
 }
-@media only screen and (max-width: 992px)
-{
+
+@media only screen and (max-width: 992px) {
     .nav-header {
         float: left !important;
     }
 }
-.hero_banner .container, .half_banner .container
-{
-    direction:rtl !important;
+
+.hero_banner .container, .half_banner .container {
+    direction: rtl !important;
 }
-.big-header-capt
-{
-    text-align:right !important;
-    font-size:30px !important;
+
+.big-header-capt {
+    text-align: right !important;
+    font-size: 30px !important;
 }
-.hero-caption p
-{
-    text-align:right;
-    font-size:20px !important;
+
+.hero-caption p {
+    text-align: right;
+    font-size: 20px !important;
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered
-{
-    text-align:right !important;
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    text-align: right !important;
 }
-.select2-results
-{
-    direction:rtl !important;
+
+.select2-results {
+    direction: rtl !important;
 }
-.select2-search--dropdown .select2-search__field
-{
+
+.select2-search--dropdown .select2-search__field {
+    direction: rtl !important;
+}
+
+.direction-rtl {
     direction:rtl !important;
 }

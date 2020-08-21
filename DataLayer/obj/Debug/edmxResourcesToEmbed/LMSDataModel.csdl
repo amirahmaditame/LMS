@@ -3,6 +3,7 @@
   <EntityContainer Name="LearningDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Categories" EntityType="LearningDBModel.Categories" />
     <EntitySet Name="Courses" EntityType="LearningDBModel.Courses" />
+    <EntitySet Name="Notifications" EntityType="LearningDBModel.Notifications" />
     <EntitySet Name="Roles" EntityType="LearningDBModel.Roles" />
     <EntitySet Name="Selected_Category" EntityType="LearningDBModel.Selected_Category" />
     <EntitySet Name="SubCourse" EntityType="LearningDBModel.SubCourse" />
@@ -34,6 +35,10 @@
       <End Role="Courses" EntitySet="Courses" />
       <End Role="SubCourse" EntitySet="SubCourse" />
     </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Users" Association="LearningDBModel.FK_Notifications_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
     <AssociationSet Name="FK_Users_Roles" Association="LearningDBModel.FK_Users_Roles">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Users" EntitySet="Users" />
@@ -45,11 +50,6 @@
     <AssociationSet Name="FK_User_PF_Users" Association="LearningDBModel.FK_User_PF_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="User_PF" EntitySet="User_PF" />
-    </AssociationSet>
-    <EntitySet Name="Notifications" EntityType="LearningDBModel.Notifications" />
-    <AssociationSet Name="FK_Notifications_Users" Association="LearningDBModel.FK_Notifications_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Notifications" EntitySet="Notifications" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Categories">
@@ -82,6 +82,18 @@
     <NavigationProperty Name="Discount" Relationship="LearningDBModel.FK_Discount_Courses" FromRole="Courses" ToRole="Discount" />
     <NavigationProperty Name="Selected_Category" Relationship="LearningDBModel.FK_Selected_Category_Courses" FromRole="Courses" ToRole="Selected_Category" />
     <NavigationProperty Name="SubCourse" Relationship="LearningDBModel.FK_SubCourse_Courses" FromRole="Courses" ToRole="SubCourse" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="NotificationTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsRead" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -151,10 +163,10 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Courses" Relationship="LearningDBModel.FK_Courses_Users" FromRole="Users" ToRole="Courses" />
+    <NavigationProperty Name="Notifications" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
     <NavigationProperty Name="Roles" Relationship="LearningDBModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
     <NavigationProperty Name="Teachers_PF" Relationship="LearningDBModel.FK_Teachers_PF_Users" FromRole="Users" ToRole="Teachers_PF" />
     <NavigationProperty Name="User_PF" Relationship="LearningDBModel.FK_User_PF_Users" FromRole="Users" ToRole="User_PF" />
-    <NavigationProperty Name="Notifications" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
   </EntityType>
   <EntityType Name="Discount">
     <Key>
@@ -236,6 +248,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Notifications_Users">
+    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="LearningDBModel.Notifications" Role="Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Users_Roles">
     <End Type="LearningDBModel.Roles" Role="Roles" Multiplicity="1" />
     <End Type="LearningDBModel.Users" Role="Users" Multiplicity="*" />
@@ -268,30 +292,6 @@
         <PropertyRef Name="UserID" />
       </Principal>
       <Dependent Role="User_PF">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Notifications">
-    <Key>
-      <PropertyRef Name="NotificationID" />
-    </Key>
-    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
-    <Property Name="NotificationTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="NotificationText" Type="String" Nullable="false" MaxLength="450" FixedLength="false" Unicode="true" />
-    <Property Name="NotificationDate" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Users" Relationship="LearningDBModel.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
-    <Property Name="IsRead" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_Notifications_Users">
-    <End Type="LearningDBModel.Users" Role="Users" Multiplicity="1" />
-    <End Type="LearningDBModel.Notifications" Role="Notifications" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="Notifications">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>

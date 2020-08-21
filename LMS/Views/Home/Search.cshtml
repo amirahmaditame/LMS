@@ -1,4 +1,5 @@
-﻿<div class="image-cover hero_banner hero-inner-2 shadow rlt" style="background:url(/Content/assets/img/banner-2.jpg) no-repeat;" data-overlay="7">
+﻿
+<div class="image-cover hero_banner hero-inner-2 shadow rlt" style="background:url(/Content/assets/img/banner-2.jpg) no-repeat;" data-overlay="7">
     <div class="elix_img_box">
         <img src="/Content/assets/img/preet-o.html" class="img-fluid" alt="" />
     </div>
@@ -19,39 +20,40 @@
                     <div class="search_hero_wrapping">
                         <div class="row">
 
-                            <form method="post" action="/Search">
-                            <div class="col-lg-5 col-md-5 col-sm-12 br-right">
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <input name="q" type="text" class="form-control" placeholder="کلمه مورد نظر" />
-                                        <img src="/Content/assets/img/search.svg" class="search-icon" alt="" />
+                           @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @class = "form-control" }))
+                           {
+                                <div class="col-lg-5 col-md-5 col-sm-12 br-right">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input name="q" type="text" class="form-control" placeholder="کلمه مورد نظر" />
+                                            <img src="/Content/assets/img/search.svg" class="search-icon" alt="" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div class="col-lg-5 col-md-4 col-sm-12 small-pad">
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <select id="c-category" class="form-control">
-                                            <option value="">&nbsp;</option>
-                                            <option value="1">Web Designing</option>
-                                            <option value="2">Business</option>
-                                            <option value="3">Accounting</option>
-                                            <option value="3">Development</option>
-                                            <option value="3">Art & Culture</option>
-                                        </select>
-                                        <img src="/Content/assets/img/pin.svg" class="search-icon" alt="" />
+                                <div class="col-lg-5 col-md-4 col-sm-12 small-pad">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <select id="c-category" class="form-control">
+                                                <option value="">&nbsp;</option>
+                                               
+                                                @*@foreach (var item in Model)
+                                                {
+                                                    <option value="">@item.Name.ToString()</option>
+                                                }*@
+                                            </select>
+                                            <img src="/Content/assets/img/pin.svg" class="search-icon" alt="" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-2 col-md-3 col-sm-12 pl-0">
-                                <div class="form-group none">
-                                    <button type="submit" class="btn search-btn full-width">جست و جو</button>
+                                <div class="col-lg-2 col-md-3 col-sm-12 pl-0">
+                                    <div class="form-group none">
+                                        <button type="submit" class="btn search-btn full-width">جست و جو</button>
+                                    </div>
                                 </div>
-                            </div>
-                           </form>
+                           }
                         </div>
 
                     </div>
@@ -62,7 +64,7 @@
 </div>
 <!-- ============================ Hero Banner End ================================== -->
 <!-- ============================ Trips Facts Start ================================== -->
-<section class="p-0 trips_top">
+<section class="p-0 trips_top direction-rtl">
     <div class="container">
         <div class="trips_wrap">
             <div class="row m-0">
@@ -73,8 +75,8 @@
                             <i class="ti-video-camera"></i>
                         </div>
                         <div class="trips_detail">
-                            <h4>100,000 online courses</h4>
-                            <p>Nor again is there anyone who loves or pursues or desires</p>
+                            <h4>@ViewBag.courseCount دوره آنلاین</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                         </div>
                     </div>
                 </div>
@@ -85,8 +87,8 @@
                             <i class="ti-medall"></i>
                         </div>
                         <div class="trips_detail">
-                            <h4>Expert instruction</h4>
-                            <p>Nam libero tempore, cum soluta and nobis est eligendi optio</p>
+                            <h4>@ViewBag.teacherCount استاد مجرب</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                         </div>
                     </div>
                 </div>
@@ -97,8 +99,8 @@
                             <i class="ti-infinite"></i>
                         </div>
                         <div class="trips_detail">
-                            <h4>Lifetime access</h4>
-                            <p>These cases are perfectly simple and easy to distinguish</p>
+                            <h4>@ViewBag.userCount نفر دانشجو</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
                         </div>
                     </div>
                 </div>

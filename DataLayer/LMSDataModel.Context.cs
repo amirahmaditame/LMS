@@ -36,6 +36,8 @@ public partial class LearningDBEntities : DbContext
 
     public virtual DbSet<Courses> Courses { get; set; }
 
+    public virtual DbSet<Notifications> Notifications { get; set; }
+
     public virtual DbSet<Roles> Roles { get; set; }
 
     public virtual DbSet<Selected_Category> Selected_Category { get; set; }
@@ -49,8 +51,6 @@ public partial class LearningDBEntities : DbContext
     public virtual DbSet<Users> Users { get; set; }
 
     public virtual DbSet<Discount> Discount { get; set; }
-
-    public virtual DbSet<Notifications> Notifications { get; set; }
 
 }
 

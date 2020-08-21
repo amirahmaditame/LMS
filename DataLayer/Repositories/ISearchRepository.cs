@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Repositories
 {
-  public  interface ISearchRepository
+    public interface ISearchRepository
     {
-         IEnumerable<SearchCoursesListViewModel> searchCourses(string q);
+        IEnumerable<SearchCoursesListViewModel> searchCourses(string q);
+        List<Categories> homeDetails();
+        int courseCount();
+        int teacherCount();
+        int userCount();
+       
+
     }
 }

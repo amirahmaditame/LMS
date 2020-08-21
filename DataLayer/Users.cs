@@ -24,11 +24,11 @@ public partial class Users
 
         this.Courses = new HashSet<Courses>();
 
+        this.Notifications = new HashSet<Notifications>();
+
         this.Teachers_PF = new HashSet<Teachers_PF>();
 
         this.User_PF = new HashSet<User_PF>();
-
-        this.Notifications = new HashSet<Notifications>();
 
     }
 
@@ -55,6 +55,10 @@ public partial class Users
 
     public virtual ICollection<Courses> Courses { get; set; }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Notifications> Notifications { get; set; }
+
     public virtual Roles Roles { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -64,10 +68,6 @@ public partial class Users
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<User_PF> User_PF { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Notifications> Notifications { get; set; }
 
 }
 
