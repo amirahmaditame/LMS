@@ -83,6 +83,7 @@ namespace DataLayer.ViewModels
         public string TeacherImageName { get; set; }
         public string Teachername { get; set; }
         public int SubCourseCount { get; set; }
+        public System.DateTime LastUpdate { get; set; }
 
     }
 

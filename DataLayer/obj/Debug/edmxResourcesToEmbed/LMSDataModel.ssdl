@@ -44,6 +44,18 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
     <Property Name="NotificationDate" Type="datetime" Nullable="false" />
     <Property Name="IsRead" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ShortDescription" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Visit" Type="int" Nullable="false" />
+    <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="RoleID" />
@@ -230,6 +242,7 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Selected_Category" EntityType="Self.Selected_Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubCourse" EntityType="Self.SubCourse" Schema="dbo" store:Type="Tables" />

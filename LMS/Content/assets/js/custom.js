@@ -201,7 +201,8 @@ $(function() {
 	$('#brand-slide').slick({
 	  slidesToShow:5,
 	  arrows: false,
-	  autoplay:true,
+		autoplay: true,
+		rtl: true,
 	  dots: false,
 	  responsive: [
 		{
@@ -233,7 +234,8 @@ $(function() {
 	$('#testimonials_style').slick({
 	  slidesToShow:1,
 	  arrows: true,
-	  autoplay:true,
+		autoplay: true,
+		rtl: true,
 	  dots: false,
 	  responsive: [
 		{
@@ -257,7 +259,8 @@ $(function() {
 	$('#four_slide').slick({
 	  slidesToShow:4,
 	  arrows: true,
-	  autoplay:true,
+		autoplay: true,
+		rtl: true,
 	  dots: false,
 	  responsive: [
 		{
@@ -288,7 +291,8 @@ $(function() {
 	$('#three_slide').slick({
 	  slidesToShow:3,
 	  arrows:true,
-	  autoplay:true,
+		autoplay: true,
+		rtl: true,
 	  dots:true,
 	  responsive: [
 		{
@@ -311,7 +315,8 @@ $(function() {
 	// Slide For No Arrow Four
 	$('.four_slide').slick({
 	  slidesToShow:4,
-	  arrows: true,
+		arrows: true,
+		rtl: true,
 	  autoplay:true,
 	  dots: false,
 	  responsive: [
@@ -342,7 +347,8 @@ $(function() {
 	// Slide For No Arrow Three
 	$('.three_slide').slick({
 	  slidesToShow:3,
-	  arrows:true,
+		arrows: true,
+		rtl: true,
 	  autoplay:true,
 	  dots:false,
 	  responsive: [
@@ -366,7 +372,8 @@ $(function() {
 	// Slide For dots Four
 	$('.four_slide-dots').slick({
 	  slidesToShow:4,
-	  arrows: true,
+		arrows: true,
+		rtl: true,
 	  autoplay:true,
 	  dots: true,
 	  responsive: [
@@ -397,7 +404,8 @@ $(function() {
 	// Slide For dots Three
 	$('.three_slide-dots').slick({
 	  slidesToShow:3,
-	  arrows:true,
+		arrows: true,
+		rtl: true,
 	  autoplay:true,
 	  dots:true,
 	  responsive: [

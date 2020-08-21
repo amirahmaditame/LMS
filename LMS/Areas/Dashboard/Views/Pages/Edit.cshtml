@@ -1,0 +1,115 @@
+﻿@model DataLayer.Pages
+
+@{
+    ViewBag.Title = "ویرایش مقاله";
+    Layout = "~/Areas/Dashboard/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<h2>ویرایش</h2>
+
+@using (Html.BeginForm("Edit", "Pages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.PageId)
+        @Html.HiddenFor(model => model.Visit)
+        @Html.HiddenFor(model => model.CreateDate)
+        @Html.HiddenFor(model => model.ImageName)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShortDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="form-group col-6">
+                <label class="col-form-label">
+                    @Html.LabelFor(model => model.ImageName)
+                </label>
+                <div>
+                    <input type="file" id="imgUp" name="imgUp" />
+                    @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <label class="col-form-label">
+                    نمایش تصویر
+                </label>
+                <div>
+                    @if (Model.ImageName != null)
+                    {
+
+                        <img src="~/Pageimages/@Model.ImageName" style="max-width: 200px" id="ImgPre" />
+                    }
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="ثبت" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+
+@section Scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#ImgPre').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#imgUp").change(function () {
+            readURL(this);
+        });
+
+
+        $(document).ready(function () {
+            $('#Text').summernote();
+        });
+
+    </script>
+
+}

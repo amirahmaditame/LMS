@@ -72,7 +72,7 @@
 .direction-rtl {
     direction:rtl !important;
 }
-.slick-initialized .slick-slide
+.slick-slider
 {
     direction:rtl !important;
 }

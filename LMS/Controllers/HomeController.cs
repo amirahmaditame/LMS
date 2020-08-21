@@ -15,11 +15,13 @@ namespace LMS.Controllers
 
         private ISearchRepository _searchRepository;
         private IHomeRepository _homeRepository;
+        private IPageRepository _pageRepository;
         LearningDBEntities db = new LearningDBEntities();
         public HomeController()
         {
             _searchRepository = new SearchRepository(db);
             _homeRepository = new HomeRepository(db);
+            _pageRepository = new PagesRepository(db);
         }
 
         public ActionResult index()
@@ -33,7 +35,7 @@ namespace LMS.Controllers
         }
         public ActionResult RecentArticles()
         {
-            return PartialView();
+            return PartialView(_pageRepository.LastNews());
         }
         public ActionResult popularCategory()
         {

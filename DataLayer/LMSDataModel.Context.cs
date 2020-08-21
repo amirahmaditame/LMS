@@ -52,6 +52,8 @@ public partial class LearningDBEntities : DbContext
 
     public virtual DbSet<Discount> Discount { get; set; }
 
+    public virtual DbSet<Pages> Pages { get; set; }
+
 }
 
 }

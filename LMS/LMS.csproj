@@ -147,6 +147,7 @@
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\PagesController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\TeachersController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\UserPanel\Controllers\DashboardController.cs" />
@@ -837,6 +838,10 @@
     <Content Include="Areas\Admin\Views\Notifications\Notifications.cshtml" />
     <Content Include="Areas\Admin\Views\Notifications\NotificationsList.cshtml" />
     <Content Include="fonts\iransans.ttf" />
+    <Content Include="Areas\Dashboard\Views\Pages\Create.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Delete.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Edit.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Pages\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -858,7 +863,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -883,6 +887,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_SingleCourseHomePage.cshtml" />
     <Content Include="Views\Home\popularCourse.cshtml" />
+    <Content Include="Views\Shared\_SinglePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -891,6 +896,7 @@
     <Folder Include="Areas\UserPanel\Views\Shared\" />
     <Folder Include="Images\Student\" />
     <Folder Include="Models\" />
+    <Folder Include="Pageimages\" />
     <Folder Include="Videos\" />
   </ItemGroup>
   <ItemGroup>

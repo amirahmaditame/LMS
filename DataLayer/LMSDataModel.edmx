@@ -49,6 +49,18 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
           <Property Name="NotificationDate" Type="datetime" Nullable="false" />
           <Property Name="IsRead" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Visit" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -235,6 +247,7 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Selected_Category" EntityType="Self.Selected_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubCourse" EntityType="Self.SubCourse" Schema="dbo" store:Type="Tables" />
@@ -343,6 +356,7 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
             <End Role="Users" EntitySet="Users" />
             <End Role="User_PF" EntitySet="User_PF" />
           </AssociationSet>
+          <EntitySet Name="Pages" EntityType="LearningDBModel.Pages" />
         </EntityContainer>
         <EntityType Name="Categories">
           <Key>
@@ -588,6 +602,18 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Visit" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -705,6 +731,19 @@ warning 6002: The table/view 'LearningDB.dbo.Discount' does not have a primary k
               <MappingFragment StoreEntitySet="Discount">
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="LearningDBModel.Pages">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Visit" ColumnName="Visit" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

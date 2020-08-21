@@ -1,0 +1,84 @@
+﻿@model IEnumerable<DataLayer.Pages>
+
+@{
+    ViewBag.Title = "مقالات";
+    Layout = "~/Areas/Dashboard/Views/Shared/Dashboard_Layout.cshtml";
+}
+
+<h2>مقالات</h2>
+
+<a class="btn btn-success m-2" href="@Url.Action("Create" , "Pages")">ایجاد مقاله جدید</a>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Visit)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>عملیات</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr id="Page_@(item.PageId)">
+    <td>
+        <img src="~/Pageimages/@item.ImageName" class="thumbnail" style="max-width:120px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Title)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Visit)
+    </td>
+    
+    <td>
+       @item.CreateDate.ToShamsi()
+    </td>
+    <td>
+
+        <a href="@Url.Action("Edit" ,"Pages" , new{id = item.PageId })" class="text-warning mx-2">
+            <i class="fa fa-edit fa-2x"></i>
+        </a>
+        <a class="text-danger" onclick="Delete(@item.PageId)">
+            <i class="fa fa-trash fa-2x"></i>
+        </a>
+        
+    </td>
+</tr>
+}
+
+</table>
+@section Scripts{
+    <script>
+        function Delete(id) {
+            swal({
+                title: "آیا از حذف مطئن هستید؟",
+                text: "بعد از حذف امکان بازگشت وجود ندارد",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.get("/Dashboard/Pages/Delete/" + id,
+                            function () {
+                                $("#Page_" + id).hide('slow');
+                            });
+                        swal("حذف با موفقیت انجام شد", {
+                            icon: "success",
+                        });
+                    }
+                });
+
+        }
+    </script>
+    }

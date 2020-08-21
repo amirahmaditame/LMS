@@ -25,6 +25,7 @@
         <AssociationConnector Association="LearningDBModel.FK_Users_Roles" />
         <AssociationConnector Association="LearningDBModel.FK_Teachers_PF_Users" />
         <AssociationConnector Association="LearningDBModel.FK_User_PF_Users" />
+        <EntityTypeShape EntityType="LearningDBModel.Pages" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

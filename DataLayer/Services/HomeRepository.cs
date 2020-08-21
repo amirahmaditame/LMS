@@ -26,8 +26,10 @@ namespace DataLayer.Services
                 SubCourseCount = x.SubCourse.Count(),
                 TeacherImageName = x.Users.Teachers_PF.Select(y => y.ImageName).ToList().FirstOrDefault(),
                 Teachername = x.Users.UserName,
+                LastUpdate = x.LastUpdate
+
                 
-            }).ToList();
+            }).OrderByDescending(l=>l.LastUpdate).ToList();
 
             return AllCourses;
         }

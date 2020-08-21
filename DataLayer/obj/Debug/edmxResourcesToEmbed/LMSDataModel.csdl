@@ -51,6 +51,7 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="User_PF" EntitySet="User_PF" />
     </AssociationSet>
+    <EntitySet Name="Pages" EntityType="LearningDBModel.Pages" />
   </EntityContainer>
   <EntityType Name="Categories">
     <Key>
@@ -296,4 +297,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Pages">
+    <Key>
+      <PropertyRef Name="PageId" />
+    </Key>
+    <Property Name="PageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Visit" Type="Int32" Nullable="false" />
+    <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
 </Schema>
