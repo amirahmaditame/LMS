@@ -597,6 +597,7 @@
     <Content Include="Content\assets\img\yoga.png" />
     <Content Include="Content\assets\js\bootstrap.min.js" />
     <Content Include="Content\assets\js\counterup.min.js" />
+    <Content Include="Content\assets\js\custom-js.js" />
     <Content Include="Content\assets\js\custom.js" />
     <Content Include="Content\assets\js\jquery.counterup.min.js" />
     <Content Include="Content\assets\js\jquery.min.js" />
@@ -880,6 +881,8 @@
     <Content Include="Views\Shared\_PageInnerLayout.cshtml" />
     <Content Include="Views\Shared\_SingleCourse.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\_SingleCourseHomePage.cshtml" />
+    <Content Include="Views\Home\popularCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

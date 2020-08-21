@@ -14,10 +14,12 @@ namespace LMS.Controllers
     {
 
         private ISearchRepository _searchRepository;
+        private IHomeRepository _homeRepository;
         LearningDBEntities db = new LearningDBEntities();
         public HomeController()
         {
             _searchRepository = new SearchRepository(db);
+            _homeRepository = new HomeRepository(db);
         }
 
         public ActionResult index()
@@ -37,9 +39,13 @@ namespace LMS.Controllers
         {
             return PartialView();
         }
-        public ActionResult FeaturedCourses()
+        public ActionResult popularCourse()
         {
             return PartialView();
+        }
+        public ActionResult FeaturedCourses()
+        {
+            return PartialView(_homeRepository.GetAllCourses());
         }
         public ActionResult Search()
         {

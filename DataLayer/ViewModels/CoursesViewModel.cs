@@ -73,6 +73,20 @@ namespace DataLayer.ViewModels
 
 
     }
-  
+    public class CourseListHomeViewModel
+    {
+
+        public string CourseName { get; set; }
+        public int Price { get; set; }
+        public int NumberOfStudents { get; set; }
+        public string ImageName { get; set; }
+        public string TeacherImageName { get; set; }
+        public string Teachername { get; set; }
+        public int SubCourseCount { get; set; }
+
+    }
+
+
+
 
 }

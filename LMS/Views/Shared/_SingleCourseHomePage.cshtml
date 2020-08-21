@@ -1,0 +1,29 @@
+﻿@model DataLayer.ViewModels.CourseListHomeViewModel
+<div class="singles_items">
+    <div class="education_block_grid style_2">
+        <div class="education_block_thumb n-shadow">
+            <a href="course-detail.html"><img src="~/Images/Courses/@Model.ImageName" class="img-fluid" alt="@Model.CourseName"></a>
+            <div class="cources_price direction-rtl">@Model.Price.ToString("#,##0") تومان</div>
+        </div>
+
+        <div class="education_block_body">
+            <h4 class="bl-title"><a href="course-detail.html">@Model.CourseName</a></h4>
+        </div>
+
+        <div class="cources_info_style3">
+            <ul>
+                <li><i class="ti-eye mr-2"></i>@Model.NumberOfStudents</li>
+                <li><i class="ti-time mr-2"></i>6h 40min</li>
+                <li><i class="ti-star text-warning mr-2"></i>4.7 Reviews</li>
+            </ul>
+        </div>
+
+        <div class="education_block_footer">
+            <div class="education_block_author">
+                <div class="path-img"><a href="instructor-detail.html"><img src="~/Images/Teachers/@Model.TeacherImageName" class="img-fluid" alt="@Model.Teachername"></a></div>
+                <h5><a href="instructor-detail.html">@Model.Teachername</a></h5>
+            </div>
+            <div class="foot_lecture"><i class="ti-control-skip-forward mr-2"></i>@Model.SubCourseCount </div>
+        </div>
+    </div>
+</div>
